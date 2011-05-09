@@ -4,6 +4,7 @@ function invalidTitle() {
 }
 // form validation function //
 function validate(form) {
+
     var name1 = form.name1.value;
     var surname1 = form.surname1.value;
     var phone1 = form.phone1.value;
@@ -12,9 +13,9 @@ function validate(form) {
     var surname2 = form.surname2.value;
     var phone2 = form.phone2.value;
     var email2 = form.email2.value;
-    var user_name = form.user_name.value;
+    var userName = form.userName.value;
     var password = form.password.value;
-    var conf_password = form.conf_password.value; 
+    var confirmPassword = form.confirmPassword.value; 
    
 
     if(name1 == "") {
@@ -50,23 +51,29 @@ function validate(form) {
         inlineMsg('email2','Debes introducir el e-mail.',2);
         return false;
     }
-    if(user_name == "") {
-        inlineMsg('user_name','Debes introducir el nombre de usuario.',2);
+    if(userName == "") {
+        inlineMsg('userName','Debes introducir el nombre de usuario.',2);
         return false;
     }
     if(password == "") {
         inlineMsg('password','Debes introducir la clave.',2);
         return false;
     } 
-    if(conf_password == "") {
-        inlineMsg('conf_password','Debes introducir la clave.',2);
+    if(confirmPassword == "") {
+        inlineMsg('confirmPassword','Debes introducir la clave.',2);
         return false;
     } 
+    
+    if(password != confirmPassword) {
+        inlineMsg('password','Tu clave no es la misma que la clave de confirmacion.',2);
+        return false;
+    }
     return true;
+//}
 }
-
 // form validation function //
 function validateLogin(formLogin) {
+    alert('test');
     var user_name = formLogin.user_name.value;
     var password = formLogin.password.value;   
 

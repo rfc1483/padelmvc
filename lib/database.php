@@ -1,16 +1,15 @@
 <?php
 
-class Database {
+class Database extends PDO {
 
-    private $hostname = 'localhost';
-    private $dbname = 'padel';
-    private $username = 'root';
+    private $dsn = 'mysql:dbname=padel;host=localhost';
+    private $userName = 'root';
     private $password = '';
 
-    public function connect() {
+    public function __construct() {
         try {
-            $db = new PDO("mysql:host=$this->hostname;dbname=$this->dbname", $this->username, $this->password);
-            return $db;
+            parent::__construct($this->dsn, $this->userName, $this->password);
+            parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo $e->getMessage();
         }

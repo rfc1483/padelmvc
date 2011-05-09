@@ -1,10 +1,14 @@
 <?php
 
+require_once('lib/database.php');
+
 class Register {
 
+    private $form;
+    private $formArray;
+//return validate(this)
     public function getRegister() {
-
-        $form = "
+        $this->form = "
 <form name='form' id='form' class='form' action='register.php' onsubmit='return validate(this)' method='post'>
 <fieldset>
 <legend>
@@ -44,63 +48,86 @@ class Register {
 <input name='email2' id='email2' type='text' />
 </div>
 <div>
-<label for='user_name'>Nombre de usuario</label>
-<input name='user_name' id='user_name' type='text' />
+<label for='userName'>Nombre de usuario</label>
+<input name='userName' id='userName' type='text' />
 </div>
 <div>
 <label for='password'>Clave</label>
 <input name='password' id='password' type='password' />
 </div>
 <div>
-<label for='conf_password'>Confirmar clave</label>
-<input name='conf_password' id='conf_password' type='password' />
+<label for='confirmPassword'>Confirmar clave</label>
+<input name='confirmPassword' id='confirmPassword' type='password' />
 </div>
 </fieldset>
 <fieldset class='submit'>
 <input name='submit' id='submit' value='Inscribirse' type='submit' class='button'/>
 </fieldset>
 </form>";
-        return $form;
+        return $this->form;
     }
 
     public function setData() {
-        require_once('lib/database.php');
-        $database = new Database();
-        $db = $database->connect();
-        $name1 = trim($_POST['name1']); // trim to remove whitespace
-        $surname1 = trim($_POST['surname1']);
-        $phone1 = trim($_POST['phone1']);
-        $email1 = trim($_POST['email1']);
-        $name2 = trim($_POST['name2']);
-        $surname2 = trim($_POST['surname2']);
-        $phone2 = trim($_POST['phone2']);
-        $email2 = trim($_POST['email2']);
-        $userName = trim($_POST['userName']);
-        $password = $_POST['password'];
-        $conf_password = $_POST['conf_password'];
+        $this->formArray = $_POST;
+        $this->formArray = $this->filterParameters($this->formArray);
+        $this->formArray['password'] = sha1($this->formArray['password']);
+    }
 
-        $name1 = mysql_real_escape_string($name1);
-        $surname1 = mysql_real_escape_string($surname1);
-        $phone1 = mysql_real_escape_string($phone1);
-        $email1 = mysql_real_escape_string($email1);
-        $name2 = mysql_real_escape_string($name2);
-        $surname2 = mysql_real_escape_string($surname2);
-        $phone2 = mysql_real_escape_string($phone2);
-        $email2 = mysql_real_escape_string($email2);
-        $userName = mysql_real_escape_string($userName);
-//        echo "antes de sha1: $password <br />";
-        $password = sha1($password); // hash password
-//        echo "despues de sha1: $password";
+    public function filterParameters($array) {
 
-        /* INSERT data */
-        $data = array($name1, $surname1, $phone1, $email1, $name2, $surname2, $phone2, $email2, $userName, $password);
-        $stmt = $db->prepare("INSERT INTO team (name1, surname1, phone1, email1, 
-            surname2, phone2, email2, userName, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?");
-        
-        $stmt->execute($data);
-        
-        /* close the database connection ** */
-        $db = null;
+        // Check if the parameter is an array
+        if (is_array($array)) {
+            // Loop through the initial dimension
+            foreach ($array as $key => $value) {
+                // Check if any nodes are arrays themselves
+                if (is_array($array[$key]))
+                // If they are, let the function call itself over that particular node
+                    $array[$key] = $this->filterParameters($array[$key]);
+
+                // Check if the nodes are strings
+                if (is_string($array[$key])) {
+                    // If they are, perform the real escape function over the selected node
+                    $array[$key] = mysql_real_escape_string($array[$key]);
+                    $array[$key] = trim($array[$key]);
+                }
+            }
+        }
+        // Check if the parameter is a string
+        if (is_string($array))
+        // If it is, perform a  mysql_real_escape_string on the parameter
+            $array = mysql_real_escape_string($array);
+
+        // Return the filtered result
+        return $array;
+    }
+
+    public function insertData() {
+        try {
+            $dbh = new Database();
+            $data = array(
+                ':name1' => $this->formArray['name1'],
+                ':surname1' =>$this->formArray['surname1'],
+                ':phone1' => $this->formArray['phone1'],
+                ':email1' => $this->formArray['email1'],
+                ':name2' => $this->formArray['name2'],
+                ':surname2' => $this->formArray['surname2'],
+                ':phone2' => $this->formArray['phone2'],
+                ':email2' => $this->formArray['email2'],
+                ':userName' => $this->formArray['userName'],
+                ':password' => $this->formArray['password']
+            );
+
+            $sql = "insert into team (name1, surname1, phone1, email1, name2,
+                surname2, phone2, email2, userName, password) 
+                VALUES (:name1, :surname1, :phone1, :email1, :name2, :surname2, 
+                :phone2, :email2, :userName, :password)";
+            $sth = $dbh->prepare($sql);
+            $sth->execute($data);
+            $db = null;
+        } catch (PDOException $e) {
+            echo "I'm sorry, Dave. I'm afraid I can't do that.";
+            file_put_contents('PDOErrors.txt', $e->getMessage(), FILE_APPEND);
+        }
 //        header('Location: thankyou.php');
     }
 
