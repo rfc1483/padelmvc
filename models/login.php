@@ -14,36 +14,16 @@ class Login {
         $this->result = '';
     }
 
-    public function getLogin() {
-        $login = "
-        <div>$this->errorString</div>
-        <form name='form' id='form' class='form' action='login.php' onsubmit='return validateLogin(this)' method='post'>
-            <fieldset>
-                <legend>
-                    <span>Login</span>
-                </legend>
-                <input type='hidden' name='page_mode' value='login' />
-                <div>
-                    <label for='userName'>Usuario</label>
-                    <input name='userName' id='userName' value='$this->userName' type='text' />
-        </div>
-        <div>
-            <label for='clave'>Clave</label>
-            <input name='password' id='password' type='text' />
-        </div>   
-        </fieldset>
-        <fieldset class='submit'>
-        <input name='submit' id='submit' value='Entrar' type='submit' class='button' />
-        </fieldset>
-        </form>
-        <a href='index.php'>Volver</a>";
-        return $login;
+    public function getErrorString() {
+        return $this->errorString;
+    }
+
+    public function getUserName() {
+        return $this->userName;
     }
 
     public function setLogin() {
         session_start();
-
-
         $page_mode = isset($_POST['page_mode']) ? $_POST['page_mode'] : '';
         $errorString = "";
         if ($page_mode == 'login') {
@@ -69,8 +49,10 @@ class Login {
             if (!$row) {
                 $this->errorString = 'Clave o nombre de usuario incorrectos<br>';
             } else {
-                $_SESSION['user_id'] = $row['id'];
-                $_SESSION['user_name'] = $row['name'];
+                $_SESSION['userId'] = $row['id'];
+                $_SESSION['userName'] = $row['userName'];
+//                if (isset($_SESSION))
+//                    print_r($_SESSION);
                 header('Location: index.php');
                 exit();
             }

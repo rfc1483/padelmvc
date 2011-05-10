@@ -128,7 +128,7 @@ class Register {
             echo "I'm sorry, Dave. I'm afraid I can't do that.";
             file_put_contents('PDOErrors.txt', $e->getMessage(), FILE_APPEND);
         }
-//        header('Location: thankyou.php');
+        header('Location: thankyou.php');
     }
 
 }

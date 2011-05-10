@@ -8,7 +8,7 @@ if ($page_mode == 'register') {
     $register->setData();
     $register->insertData();
 } else {
-    $result = $register->getRegister();
+    $result = 'lib/registerForm.php';
 }
 
 require 'views/register.php';

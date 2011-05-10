@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <?php $title = 'Menu' ?>
 <?php ob_start() ?>
 <?php echo $result; ?>
