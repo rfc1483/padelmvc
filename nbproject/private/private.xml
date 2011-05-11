@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/C:/xampp/htdocs/padel/index.php</file>
+        <file>file:/C:/xampp/htdocs/padel/controllers/register.php</file>
+        <file>file:/C:/xampp/htdocs/padel/models/register.php</file>
+        <file>file:/C:/xampp/htdocs/padel/lib/database.php</file>
+        <file>file:/C:/xampp/htdocs/padel/login.php</file>
+        <file>file:/C:/xampp/htdocs/padel/controllers/login.php</file>
+        <file>file:/C:/xampp/htdocs/padel/PDOErrors.txt</file>
+        <file>file:/C:/xampp/htdocs/padel/models/login.php</file>
+        <file>file:/C:/xampp/htdocs/padel/models/logout.php</file>
+        <file>file:/C:/xampp/htdocs/padel/register.php</file>
+        <file>file:/C:/xampp/htdocs/padel/views/layout.php</file>
+        <file>file:/C:/xampp/htdocs/padel/views/register.php</file>
+        <file>file:/C:/xampp/htdocs/padel/views/login.php</file>
+        <file>file:/C:/xampp/htdocs/padel/js/messages.js</file>
+        <file>file:/C:/xampp/htdocs/padel/models/thankyou.php</file>
+    </open-files>
 </project-private>

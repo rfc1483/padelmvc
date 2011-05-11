@@ -9,6 +9,7 @@ if ($page_mode == 'register') {
     $register->insertData();
 } else {
     $result = 'lib/registerForm.php';
+    require 'views/register.php';
 }
 
-require 'views/register.php';
+
