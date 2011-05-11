@@ -11,5 +11,3 @@ if ($page_mode == 'register') {
     $result = 'lib/registerForm.php';
     require 'views/register.php';
 }
-
-

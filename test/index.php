@@ -1,5 +1,3 @@
-<?php
-
-require_once('../lib/database.php');
-$db = new Database('localhost','root','','test');
-$db->connect();
+this is a foo line
+this is a bar line
+this is a baz line
