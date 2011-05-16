@@ -1,5 +1,11 @@
-<?php $title = 'Menu' ?>
-<?php ob_start() ?>
-<?php include $result; ?>
-<?php $content = ob_get_clean() ?>
-<?php include 'layout.php' ?>
+<?php
+require_once('bootstrap.php');
+
+$template = $twig->loadTemplate('index.html.twig');
+
+$pageTitle = 'Menu';
+$template->display(array(
+    'pageTitle' => $pageTitle,
+    'session' => $session
+));
+?>

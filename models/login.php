@@ -5,13 +5,11 @@ require_once('lib/database.php');
 class Login {
 
     private $errorString;
-    private $result;
     private $password;
     private $userName;
 
     function __construct() {
         $this->errorString = '';
-        $this->result = '';
     }
 
     public function getErrorString() {
@@ -22,10 +20,9 @@ class Login {
         return $this->userName;
     }
 
-    public function setLogin() {
+    public function setSession() {
         session_start();
         $page_mode = isset($_POST['page_mode']) ? $_POST['page_mode'] : '';
-        $errorString = "";
         if ($page_mode == 'login') {
             $this->password = sha1($_POST['password']);
             $this->userName = $_POST['userName'];
@@ -47,18 +44,12 @@ class Login {
                 echo $e->getMessage();
             }
             if (!$row) {
-                $this->errorString = 'Clave o nombre de usuario incorrectos<br>';
+                $this->errorString = 'Clave o nombre de usuario incorrectos';
             } else {
                 $_SESSION['userId'] = $row['id'];
                 $_SESSION['userName'] = $row['userName'];
-//                if (isset($_SESSION))
-//                    print_r($_SESSION);
                 header('Location: index.php');
-                exit();
             }
-        } else {
-            $this->password = "";
-            $this->userName = "";
         }
     }
 

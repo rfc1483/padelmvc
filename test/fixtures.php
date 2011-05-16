@@ -16,7 +16,7 @@ class Fixtures {
                 ':phone2' => $phone2,
                 ':email2' => $email2,
                 ':userName' => $userName,
-                ':password' => $password
+                ':password' => sha1($password)
             );
             echo '<pre>';
             print_r($data);

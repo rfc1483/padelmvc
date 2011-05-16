@@ -16,13 +16,18 @@ class Find {
         include 'lib/findForm.php';
         $this->getAjax();
 
+        $this->writeTable();
+    }
+
+    public function writeTable() {
         if ($this->pageMode == 'find' || $this->refresh == true) {
             $this->showHeaders();
             $this->showRows();
+            echo "</table>";
+            echo "<br /><a href='index.php'>Volver</a>";
         }
-        echo "</table>";
-        echo "<br /><a href='index.php'>Volver</a>";
     }
+
     private function getAjax() {
         //obtenemos valores que envió la funcion en
         //Javascript mediante el metodo GET
@@ -103,7 +108,6 @@ class Find {
         }
     }
 
-
     private function showRows() {
         // Database connection data. 
         require_once '../lib/database.php';
@@ -128,7 +132,7 @@ class Find {
             $sth = $dbh->prepare($sql);
             $sth->execute();
             $sth->setFetchMode(PDO::FETCH_ASSOC);
-        //mostramos los resultados mediante la consulta de arriba
+            //mostramos los resultados mediante la consulta de arriba
             while ($row = $sth->fetch()) {
                 $id = $row['id'];
                 echo "<tr onclick=\"document.location='../modify/index.php?id';\"> \n";

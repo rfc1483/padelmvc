@@ -1,6 +1,11 @@
-<script type="text/javascript" src="js/messages.js"></script>
-<?php $title = 'Login' ?>
-<?php ob_start() ?>
-<?php include $result; ?>
-<?php $content = ob_get_clean() ?>
-<?php include 'layout.php' ?>
+<?php
+require_once('bootstrap.php');
+
+$template = $twig->loadTemplate('login.html.twig');
+
+$pageTitle = 'Menu';
+$template->display(array(
+    'pageTitle' => $pageTitle,
+    'login' => $login
+));
+?>

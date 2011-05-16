@@ -2,6 +2,5 @@
 
 require_once 'models/login.php';
 $login = new Login();
-$login->setLogin();
-$result = 'lib/loginForm.php'; 
+$login->setSession();
 require 'views/login.php';

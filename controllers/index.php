@@ -1,12 +1,9 @@
 <?php
-
 session_start();
 
 if (isset($_SESSION['userId'])) {
-    $result = "Hola " . $_SESSION['userName'];
-    $result .= "<br /><br />";
-    $result .= "<a href='logout.php'>Log out</a>";
+    $session = $_SESSION;
 } else {
-    $result = 'lib/indexMenu.php';
+    $session = null;
 }
 require 'views/index.php';

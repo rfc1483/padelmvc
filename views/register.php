@@ -1,8 +1,11 @@
-<script type="text/javascript" src="js/messages.js"></script>
-<?php $title = 'Menu' ?>
+<?php
 
-<?php ob_start() ?>
-<?php include $result; ?>
-<?php $content = ob_get_clean() ?>
+require_once('bootstrap.php');
 
-<?php include 'layout.php' ?>
+$template = $twig->loadTemplate('register.html.twig');
+
+$pageTitle = 'Register';
+$template->display(array(
+    'pageTitle' => $pageTitle
+));
+?>
