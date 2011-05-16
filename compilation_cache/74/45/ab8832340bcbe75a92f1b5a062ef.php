@@ -10,7 +10,6 @@ class __TwigTemplate_7445ab8832340bcbe75a92f1b5a062ef extends Twig_Template
         parent::__construct($env);
 
         $this->blocks = array(
-            'title' => array($this, 'block_title'),
             'body' => array($this, 'block_body'),
         );
     }
@@ -32,15 +31,9 @@ class __TwigTemplate_7445ab8832340bcbe75a92f1b5a062ef extends Twig_Template
     }
 
     // line 2
-    public function block_title($context, array $blocks = array())
-    {
-        echo twig_escape_filter($this->env, (isset($context['pageTitle']) ? $context['pageTitle'] : null), "html");
-    }
-
-    // line 3
     public function block_body($context, array $blocks = array())
     {
-        // line 4
+        // line 3
         echo "<div>";
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context['login']) ? $context['login'] : null), "getErrorString", array(), "method", false), "html");
         echo "</div>
@@ -53,7 +46,7 @@ class __TwigTemplate_7445ab8832340bcbe75a92f1b5a062ef extends Twig_Template
         <div>
             <label for='userName'>Usuario</label>
             <input name='userName' id='userName' value='";
-        // line 13
+        // line 12
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context['login']) ? $context['login'] : null), "getUserName", array(), "method", false), "html");
         echo "' type='text' />
         </div>

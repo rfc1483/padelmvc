@@ -51,7 +51,6 @@ class Find {
             $this->name = "";
             $this->surname = "";
         }
-        echo $this->refresh;
     }
 
     private function showHeaders() {
@@ -140,7 +139,7 @@ class Find {
             //mostramos los resultados mediante la consulta de arriba
             while ($row = $sth->fetch()) {
                 $id = $row['id'];
-                echo "<tr onclick=\"document.location='../modify/index.php?id';\"> \n";
+                echo "<tr onclick=\"document.location='modify/index.php?id=$id';\"> \n";
                 echo "<td" . $this->estiloCampo($this->campo, 'name1') . "onclick=\"../modify/index.php\">$row[$name1] $row[$surname1] / $row[$name2] $row[$surname2]</td> \n";
                 echo "</tr> \n";
             }

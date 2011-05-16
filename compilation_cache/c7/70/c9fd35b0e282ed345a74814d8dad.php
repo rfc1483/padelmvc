@@ -10,7 +10,6 @@ class __TwigTemplate_c770c9fd35b0e282ed345a74814d8dad extends Twig_Template
         parent::__construct($env);
 
         $this->blocks = array(
-            'title' => array($this, 'block_title'),
             'body' => array($this, 'block_body'),
         );
     }
@@ -32,15 +31,9 @@ class __TwigTemplate_c770c9fd35b0e282ed345a74814d8dad extends Twig_Template
     }
 
     // line 2
-    public function block_title($context, array $blocks = array())
-    {
-        echo twig_escape_filter($this->env, (isset($context['pageTitle']) ? $context['pageTitle'] : null), "html");
-    }
-
-    // line 3
     public function block_body($context, array $blocks = array())
     {
-        // line 4
+        // line 3
         echo "Has finalizado la sesion. <br />
 <a href='index.php'>Volver</a>
 ";
