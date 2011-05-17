@@ -1,1 +1,7 @@
-SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokensSQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokensSQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'name2 = 'asdf',
+            surname2 = 'asdf',
+            phone2 = 'asdf',
+    ' at line 6
+SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens

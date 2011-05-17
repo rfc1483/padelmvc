@@ -35,8 +35,8 @@ class Find {
     private function getAjax() {
         //obtenemos valores que envió la funcion en
         //Javascript mediante el metodo GET
-        $refresh = false;
-        if (isset($_GET['campo']) and isset($_GET['orden'])) {           
+        $this->refresh = false;
+        if (isset($_GET['campo']) and isset($_GET['orden'])) { 
             $this->refresh = true;
             $this->formData = $_GET;
             extract($this->formData);
@@ -139,8 +139,8 @@ class Find {
             //mostramos los resultados mediante la consulta de arriba
             while ($row = $sth->fetch()) {
                 $id = $row['id'];
-                echo "<tr onclick=\"document.location='modify/index.php?id=$id';\"> \n";
-                echo "<td" . $this->estiloCampo($this->campo, 'name1') . "onclick=\"../modify/index.php\">$row[$name1] $row[$surname1] / $row[$name2] $row[$surname2]</td> \n";
+                echo "<tr onclick=\"document.location='modify.php?id=$id';\"> \n";
+                echo "<td" . $this->estiloCampo($this->campo, 'name1') . ">$row[$name1] $row[$surname1] / $row[$name2] $row[$surname2]</td> \n";
                 echo "</tr> \n";
             }
         } catch (PDOException $e) {
