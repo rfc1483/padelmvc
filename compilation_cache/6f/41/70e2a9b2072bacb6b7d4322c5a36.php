@@ -34,7 +34,7 @@ class __TwigTemplate_6f4170e2a9b2072bacb6b7d4322c5a36 extends Twig_Template
     public function block_body($context, array $blocks = array())
     {
         // line 3
-        echo "Los datos del equipo han sido actualizados. <br />
+        echo "Los datos del equipo han sido actualizados. <br /> <br />
 <a href='index.php'>Volver</a>
 ";
     }

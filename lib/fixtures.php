@@ -4,7 +4,46 @@ require_once('database.php');
 
 class Fixtures {
 
-    public function createTable() {
+    public function dropTableTeam() {
+        try {
+            $dbh = new Database();
+            $sql = "DROP table IF EXISTS team";
+            $sth = $dbh->prepare($sql);
+            $sth->execute();
+            $db = null;
+        } catch (PDOException $e) {
+            echo "I'm sorry, Dave. I'm afraid I can't do that. <br />";
+            file_put_contents('PDOErrors.txt', $e->getMessage() . "\n", FILE_APPEND);
+        }
+    }
+
+    public function dropTableAdmin() {
+        try {
+            $dbh = new Database();
+            $sql = "DROP table IF EXISTS admin";
+            $sth = $dbh->prepare($sql);
+            $sth->execute();
+            $db = null;
+        } catch (PDOException $e) {
+            echo "I'm sorry, Dave. I'm afraid I can't do that. <br />";
+            file_put_contents('PDOErrors.txt', $e->getMessage() . "\n", FILE_APPEND);
+        }
+    }
+
+    public function dropTableLeague() {
+        try {
+            $dbh = new Database();
+            $sql = "DROP table IF EXISTS league";
+            $sth = $dbh->prepare($sql);
+            $sth->execute();
+            $db = null;
+        } catch (PDOException $e) {
+            echo "I'm sorry, Dave. I'm afraid I can't do that. <br />";
+            file_put_contents('PDOErrors.txt', $e->getMessage() . "\n", FILE_APPEND);
+        }
+    }
+
+    public function createTableTeam() {
         try {
             $dbh = new Database();
             $sql = "create table IF NOT EXISTS team (
@@ -24,12 +63,70 @@ class Fixtures {
             $sth->execute();
             $db = null;
         } catch (PDOException $e) {
+            echo "I'm sorry, Dave. I'm afraid I can't do that. <br />";
+            file_put_contents('PDOErrors.txt', $e->getMessage() . "\n", FILE_APPEND);
+        }
+    }
+
+    public function createTableAdmin() {
+        try {
+            $dbh = new Database();
+            $sql = "create table IF NOT EXISTS admin (
+                id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                userName VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci,
+                password VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci
+                )CHARACTER SET utf8 COLLATE utf8_general_ci";
+            $sth = $dbh->prepare($sql);
+            $sth->execute();
+            $db = null;
+        } catch (PDOException $e) {
             echo "I'm sorry, Dave. I'm afraid I can't do that.";
             file_put_contents('PDOErrors.txt', $e->getMessage() . "\n", FILE_APPEND);
         }
     }
 
-    public function insert(array $team) {
+    public function createTableLeague() {
+        try {
+            $dbh = new Database();
+            $sql = "CREATE TABLE IF NOT EXISTS league (
+                id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                name VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci,
+                status VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci,
+                year VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci
+                )CHARACTER SET utf8 COLLATE utf8_general_ci";
+            $sth = $dbh->prepare($sql);
+            $sth->execute();
+            $db = null;
+        } catch (PDOException $e) {
+            echo "I'm sorry, Dave. I'm afraid I can't do that.";
+            file_put_contents('PDOErrors.txt', $e->getMessage() . "\n", FILE_APPEND);
+        }
+    }
+
+    public function insertLeague(array $league) {
+        require_once('../lib/database.php');
+        try {
+            extract($league);
+            $data = array(
+                ':name' => $name,
+                ':status' => $status,
+                ':year' => $year
+            );
+            echo '<pre>';
+            print_r($data);
+
+            $dbh = new Database();
+            $sql = "insert into league (name, status, year) VALUES (:name, :status, :year)";
+            $sth = $dbh->prepare($sql);
+            $sth->execute($data);
+            $db = null;
+        } catch (PDOException $e) {
+            echo "I'm sorry, Dave. I'm afraid I can't do that.";
+            file_put_contents('PDOErrors.txt', $e->getMessage(), FILE_APPEND);
+        }
+    }
+
+    public function insertTeam(array $team) {
         require_once('../lib/database.php');
         try {
             extract($team);
@@ -62,8 +159,29 @@ class Fixtures {
         }
     }
 
-}
+    public function insertAdmin(array $team) {
+        require_once('../lib/database.php');
+        try {
+            extract($team);
+            $data = array(
+                ':userName' => $userName,
+                ':password' => sha1($password)
+            );
+            echo '<pre>';
+            print_r($data);
 
+            $dbh = new Database();
+            $sql = "insert into admin (userName, password) VALUES (:userName, :password)";
+            $sth = $dbh->prepare($sql);
+            $sth->execute($data);
+            $db = null;
+        } catch (PDOException $e) {
+            echo "I'm sorry, Dave. I'm afraid I can't do that.";
+            file_put_contents('PDOErrors.txt', $e->getMessage(), FILE_APPEND);
+        }
+    }
+
+}
 
 $team1 = array(
     'name1' => 'Mirentxu',
@@ -104,8 +222,28 @@ $team3 = array(
     'password' => 'ramos'
 );
 
+$admin = array(
+    'userName' => 'admin',
+    'password' => 'admin123'
+);
+
+$league = array(
+    'name' => 'First league',
+    'status' => 'Active',
+    'year' => '2011'
+);
+
 $fixtures = new Fixtures();
-$fixtures->createTable();
-$fixtures->insert($team1);
-$fixtures->insert($team2);
-$fixtures->insert($team3);
+$fixtures->dropTableTeam();
+$fixtures->createTableTeam();
+$fixtures->insertTeam($team1);
+$fixtures->insertTeam($team2);
+$fixtures->insertTeam($team3);
+
+$fixtures->dropTableAdmin();
+$fixtures->createTableAdmin();
+$fixtures->insertAdmin($admin);
+
+$fixtures->dropTableLeague();
+$fixtures->createTableLeague();
+$fixtures->insertLeague($league);

@@ -3,9 +3,8 @@
 class Find {
 
     private $refresh;
-    private $formData = array();
-    private $campo;
-    private $orden;
+    private $field;
+    private $sort;
     private $name;
     private $surname;
     private $criteria;
@@ -13,9 +12,9 @@ class Find {
 
     public function writeTable() {
         $this->getAjax();
-        $this->pageMode = $this->getPageMode();
-        $this->refresh = $this->getRefresh();
-        if ($this->pageMode == 'find' || $this->refresh == true) {
+        $pageMode = isset($_POST['page_mode']) ? $_POST['page_mode'] : '';
+        $this->setPageMode($pageMode);
+        if ($this->getPageMode() == 'find' || $this->getRefresh() == true) {
             $this->showHeaders();
             $this->showRows();
             echo "</table>";
@@ -23,89 +22,117 @@ class Find {
         }
     }
 
-    public function getRefresh() {
+    private __get($key) {
+        return $this->key;
+    }
+    private function getRefresh() {
         return $this->refresh;
     }
 
-    public function getPageMode() {
-        $this->pageMode = isset($_POST['page_mode']) ? $_POST['page_mode'] : '';
+    private function setPageMode($page_mode) {
+        $this->pageMode = $page_mode;
+    }
+
+    private function setRefresh($refresh) {
+        $this->refresh = $refresh;
+    }
+
+    private function getPageMode() {
         return $this->pageMode;
     }
 
+    private function getName() {
+        return $this->name;
+    }
+
+    private function getSurname() {
+        return $this->surname;
+    }
+
+    public function setField($field) {
+        $this->field = $field;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+
+    public function setSurname($surname) {
+        $this->surname = $surname;
+    }
+
     private function getAjax() {
-        //obtenemos valores que envió la funcion en
-        //Javascript mediante el metodo GET
+        // We get the values from the ajax script sent through the GET method
         $this->refresh = false;
-        if (isset($_GET['campo']) and isset($_GET['orden'])) { 
-            $this->refresh = true;
-            $this->formData = $_GET;
-            extract($this->formData);
-            $this->campo = $campo;
-            $this->orden = $orden;
-            $this->name = $name;
-            $this->surname = $surname;
+        if (isset($_GET['field']) and isset($_GET['sort'])) {
+            $this->setRefresh(true);
+            extract($_GET);
+            $this->setField($field);
+            $this->setSort($sort);
+            $this->setName($name);
+            $this->setSurname($surname);
         } else {
             //por defecto
-            $this->campo = 'name1';
-            $this->orden = 'ASC';
-            $this->name = "";
-            $this->surname = "";
+            $this->setField('name1');
+            $this->setSort('ASC');
+            $this->setName('');
+            $this->setSurname('');
         }
     }
 
     private function showHeaders() {
-        if ($this->pageMode == 'find') {
-            $this->name = $_POST['name'];
-            $this->surname = $_POST['surname'];
+        if ($this->getPageMode() == 'find') {
+            $this->getName() = $_POST['name'];
+            $this->getSurname() = $_POST['surname'];
         }
 
         echo "<table cellspacing='0' cellpading='0'>";
         echo "<tr class='encabezado'>";
 
-        //definimos dos arrays uno para los nombres de los campos de la tabla y
-        //para los nombres que mostraremos en vez de los de la tabla -encabezados
-        $campos = "name1";
-        $cabecera = "Equipo";
+        // Defines two arrays, one for the field's names of the table
+        // and the other for the headers.
+        $fields = "name1";
+        $header = "Equipo";
 
-        //los separamos mediante coma
-        $cabecera = explode(",", $cabecera);
-        $campos = explode(",", $campos);
+        // Separates the items with comma.
+        $header = explode(",", $header);
+        $fields = explode(",", $fields);
 
-        //numero de elementos en el primer array
-        $nroItemsArray = count($campos);
-        //iniciamos variable i=0
+        // Number of elements on the first array.
+        $nroItemsArray = count($fields);
         $i = 0;
 
-        //mediante un bucle crearemos las columnas
+        // Creating the columns
         while ($i <= $nroItemsArray - 1) {
-            //comparamos: si la columna campo es igual al elemento
-            //actual del array
-            if ($campos[$i] == $this->campo) {
-                //comparamos: si esta Descendente cambiamos a Ascendente
-                //y viceversa
-                if ($this->orden == "DESC") {
-                    $this->orden = "ASC";
+            // Comparing if the field column is the same as the current
+            // array item.
+            if ($fields[$i] == $this->field) {
+                // Toogling the sort value
+                if ($this->sort == "DESC") {
+                    $this->sort = "ASC";
                     $flecha = "img/arrow_down.gif";
                 } else {
-                    $this->orden = "DESC";
+                    $this->sort = "DESC";
                     $flecha = "img/arrow_up.gif";
                 }
-                //si coinciden campo con el elemento del array
-                //la cabecera tendrá un color distinto
-                echo "<td class=\"encabezado_selec\" onclick=OrdenarPor('$campos[$i]','$this->orden','$this->name','$this->surname')><a><img src=\"" . $flecha . "\" />" . $cabecera[$i] . "</a></td> \n";
+                $criteria = "'$fields[$i]','$this->sort','$this->name','$this->surname'";
+                // If the field is the same as the current array item
+                // the header will have a different color.
+                echo "<td class=\"encabezado_selec\" onclick=sortBy($criteria)>";
+                echo "<a><img src=\"" . $flecha . "\" />" . $header[$i] . "</a></td> \n";
             } else {
-                //caso contrario la columna no tendra color
-                echo "<td onclick=OrdenarPor('$campos[$i]','$this->orden','$this->name','$this->surname')><a >" . $cabecera[$i] . "</a></td> \n";
+                // If isn't the same, the column won't have a different color
+                echo "<td onclick=sortBy('$fields[$i]','$this->sort','$this->name','$this->surname')><a >" . $header[$i] . "</a></td> \n";
             }
             $i++;
         }
         echo "</tr>";
     }
 
-    // Esta funcion permite comparar el campo actual y el nombre de 
+    // Esta funcion permite comparar el field actual y el nombre de 
     // la columna en la base de datos
-    private function estiloCampo($_campo, $_columna) {
-        if ($_campo == $_columna) {
+    private function estilofield($_field, $_columna) {
+        if ($_field == $_columna) {
             return " class=\"filas_selec\"";
         } else {
             return "";
@@ -116,7 +143,7 @@ class Find {
         // Database connection data. 
         require_once 'lib/database.php';
 // Realizamos la consulta de los equipos
-// Ordenandolos segun campo asc o desc
+// sortandolos segun field asc o desc
         try {
             $this->criteria = "where 1";
             if (!empty($this->name)) {
@@ -132,7 +159,7 @@ class Find {
             $name2 = 'name2';
             $surname2 = 'surname2';
             $dbh = new Database();
-            $sql = "SELECT * FROM team $this->criteria ORDER BY $this->campo $this->orden";
+            $sql = "SELECT * FROM team $this->criteria ORDER BY $this->field $this->sort";
             $sth = $dbh->prepare($sql);
             $sth->execute();
             $sth->setFetchMode(PDO::FETCH_ASSOC);
@@ -140,7 +167,7 @@ class Find {
             while ($row = $sth->fetch()) {
                 $id = $row['id'];
                 echo "<tr onclick=\"document.location='modify.php?id=$id';\"> \n";
-                echo "<td" . $this->estiloCampo($this->campo, 'name1') . ">$row[$name1] $row[$surname1] / $row[$name2] $row[$surname2]</td> \n";
+                echo "<td" . $this->fieldStyle($this->field, 'name1') . ">$row[$name1] $row[$surname1] / $row[$name2] $row[$surname2]</td> \n";
                 echo "</tr> \n";
             }
         } catch (PDOException $e) {

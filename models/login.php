@@ -7,9 +7,11 @@ class Login {
     private $errorString;
     private $password;
     private $userName;
+    private $tableName;
 
-    function __construct() {
+    function __construct($tableName) {
         $this->errorString = '';
+        $this->tableName = $tableName;
     }
 
     public function getErrorString() {
@@ -33,7 +35,9 @@ class Login {
                     ':userName' => $this->userName,
                     ':password' => $this->password
                 );
-                $sql = "SELECT * FROM team WHERE userName=:userName AND password = :password";
+                echo $this->userName;
+                echo $this->password;
+                $sql = "SELECT * FROM $this->tableName WHERE userName=:userName AND password = :password";
                 $sth = $dbh->prepare($sql);
                 $sth->execute($data);
                 $sth->setFetchMode(PDO::FETCH_ASSOC);

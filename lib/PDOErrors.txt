@@ -10,4 +10,4 @@ SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in you
 SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
                 name1 VARCHAR(255) C' at line 2
 SQLSTATE[42000]: Syntax error or access violation: 1113 A table must have at least 1 column
-SQLSTATE[42S22]: Column not found: 1054 Unknown column 'userName' in 'field list'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'userName' in 'field list'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'userName' in 'field list'
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'userName' in 'field list'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'userName' in 'field list'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'userName' in 'field list'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'padel.admin' doesn't exist
