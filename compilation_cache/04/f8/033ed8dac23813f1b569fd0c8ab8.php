@@ -37,18 +37,32 @@ class __TwigTemplate_04f8033ed8dac23813f1b569fd0c8ab8 extends Twig_Template
         echo "    ";
         if (((isset($context['session']) ? $context['session'] : null) == null)) {
             // line 4
-            echo "        Registro <a href='register.php'>aqui</a> <br />
-        Autentificacion <a href='login.php'>aqui</a> <br />
-        Busqueda <a href='find.php'>aqui</a> <br />
-        Panel de administracion <a href='loginAdmin.php'>aqui</a>
+            echo "Sign up<a href='register.php'>aqui</a> <br />
+Login <a href='login.php'>aqui</a> <br />
+Search <a href='find.php'>aqui</a> <br />
+Admin panel <a href='loginAdmin.php'>aqui</a>
     ";
         } else {
             // line 9
-            echo "        Hola ";
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context['session']) ? $context['session'] : null), "userName", array(), "any", false), "html");
-            echo "
-        <br /><br />
-        <a href='logout.php'>Log out</a>
+            echo "        ";
+            if (($this->getAttribute((isset($context['session']) ? $context['session'] : null), "userName", array(), "any", false) == "admin")) {
+                echo " 
+Sign up <a href='register.php'>here</a> <br />
+Login <a href='login.php'>here</a> <br />
+Search <a href='find.php'>here</a> <br />
+Admin panel <a href='loginAdmin.php'>here</a> <br />
+League manager <a href='leagues.php'>here</a>
+        ";
+            } else {
+                // line 16
+                echo "Hola ";
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context['session']) ? $context['session'] : null), "userName", array(), "any", false), "html");
+                echo "
+        ";
+            }
+            // line 18
+            echo "<br /><br />
+<a href='logout.php'>Log out</a>
     ";
         }
     }

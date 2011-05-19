@@ -1,6 +1,6 @@
 <?php
 
-class Find {
+class League {
 
     private $refresh;
     private $field;
@@ -80,13 +80,12 @@ class Find {
     private function getHeader() {
         if ($this->pageMode == 'find') {
             $this->name = $_POST['name'];
-            $this->surname = $_POST['surname'];
         }
 
         // Defines two arrays, one for the field's names of the table
         // and the other for the headers.
-        $this->field = "name1";
-        $this->header = "Equipo";
+        $this->field = "name";
+        $this->header = "League";
 
         // Creating the columns
         $this->toogleSort();
@@ -122,12 +121,13 @@ class Find {
         try {
             $this->criteria = "where 1";
             if (!empty($this->name)) {
-                $this->criteria .= " AND name1='$this->name' ";
-                $this->criteria .= " OR name2='$this->name' ";
+                $this->criteria .= " AND name='$this->name' ";
             }
-            if (!empty($this->surname)) {
-                $this->criteria .= " AND surname1='$this->surname' ";
-                $this->criteria .= " OR surname2='$this->surname' ";
+            if (!empty($this->year)) {
+                $this->criteria .= " AND year='$this->year' ";
+            }
+            if (!empty($this->status)) {
+                $this->status .= " AND status='$this->status' ";
             }
 
             $this->showDataRow();
@@ -140,7 +140,7 @@ class Find {
 
     private function showDataRow() {
         $dbh = new Database();
-        $sql = "SELECT * FROM team $this->criteria ORDER BY $this->field $this->sort";
+        $sql = "SELECT * FROM league $this->criteria ORDER BY $this->field $this->sort";
         $sth = $dbh->prepare($sql);
         $sth->execute();
         $sth->fetchMode = PDO::FETCH_ASSOC;

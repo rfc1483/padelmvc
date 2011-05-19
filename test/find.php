@@ -8,22 +8,20 @@ class Find {
     private $name;
     private $surname;
     private $criteria;
-    private $sortCriteria;
     private $pageMode;
     private $flecha;
     private $header;
     private $headerClass;
-    private $row;
 
     public function __construct() {
         if ($this->showTable() == true) {
-            $this->getHeader();
-            $this->getRows();
+            $this->showHeaders();
+//            $this->showRows();
+//            echo "</table>";
+//            echo "<br /><a href='index.php'>Volver</a>";
         }
     }
 
-    // Shows the table if the form was send or if the ajax to change
-    // the sort order is executed.
     public function showTable() {
         $this->getAjax();
         $this->pageMode = isset($_POST['page_mode']) ? $_POST['page_mode'] : '';
@@ -77,7 +75,7 @@ class Find {
         }
     }
 
-    private function getHeader() {
+    private function showHeaders() {
         if ($this->pageMode == 'find') {
             $this->name = $_POST['name'];
             $this->surname = $_POST['surname'];
@@ -85,13 +83,41 @@ class Find {
 
         // Defines two arrays, one for the field's names of the table
         // and the other for the headers.
-        $this->field = "name1";
+        $fields = "name1";
         $this->header = "Equipo";
 
+        // Separates the items with comma.
+        $this->header = explode(",", $this->header);
+        $fields = explode(",", $fields);
+
+        // Number of elements on the first array.
+        $numItemsArray = count($fields);
+
         // Creating the columns
-        $this->toogleSort();
-        $this->headerClass = "encabezado_selec";
-        $this->sortCriteria = "'$this->field','$this->sort','$this->name','$this->surname'";
+        $this->showHeaderDataCell($fields, $numItemsArray);
+    }
+
+    private function showHeaderDataCell($fields, $numItemsArray) {
+        $i = 0;
+        while ($i <= $numItemsArray - 1) {
+            echo $this->header[$i];
+            // Comparing if the field column is the same as the current
+            // array item.
+            $this->headerClass = "";
+            if ($fields[$i] == $this->field) {
+                $this->toogleSort();
+                $this->headerClass = "encabezado_selec";
+                $this->criteria = "'$fields[$i]','$this->sort','$this->name','$this->surname'";
+                // If the field is the same as the current array item
+                // the header will have a different color.
+//                echo "<td class=\"encabezado_selec\" onclick=sortBy($criteria)>";
+//                echo "<a><img src=\"" . $flecha . "\" />" . $header[$i] . "</a></td> \n";
+//            } else {
+//                // If isn't the same, the column won't have a different color
+//                echo "<td onclick=sortBy($criteria)><a >" . $header[$i] . "</a></td> \n";
+            }
+            $i++;
+        }
     }
 
     // Toogling the sort value
@@ -115,7 +141,7 @@ class Find {
         }
     }
 
-    private function getRows() {
+    private function showRows() {
         // Database connection data. 
         require_once 'lib/database.php';
         // We do the team's query sorting by the 'asc' or 'desc' field
@@ -139,12 +165,23 @@ class Find {
     }
 
     private function showDataRow() {
+        $name1 = 'name1';
+        $surname1 = 'surname1';
+        $name2 = 'name2';
+        $surname2 = 'surname2';
         $dbh = new Database();
         $sql = "SELECT * FROM team $this->criteria ORDER BY $this->field $this->sort";
         $sth = $dbh->prepare($sql);
         $sth->execute();
         $sth->fetchMode = PDO::FETCH_ASSOC;
-        $this->row = $sth->fetchall();
+
+        //mostramos los resultados mediante la consulta de arriba
+        while ($row = $sth->fetch()) {
+            $id = $row['id'];
+            echo "<tr onclick=\"document.location='modify.php?id=$id';\"> \n";
+            echo "<td" . $this->fieldStyle($this->field, 'name1') . ">$row[$name1] $row[$surname1] / $row[$name2] $row[$surname2]</td> \n";
+            echo "</tr> \n";
+        }
     }
 
 }

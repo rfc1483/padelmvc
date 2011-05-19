@@ -227,8 +227,18 @@ $admin = array(
     'password' => 'admin123'
 );
 
-$league = array(
+$league1 = array(
     'name' => 'First league',
+    'status' => 'Active',
+    'year' => '2011'
+);
+$league2 = array(
+    'name' => 'Second league',
+    'status' => 'Active',
+    'year' => '2011'
+);
+$league3 = array(
+    'name' => 'Third league',
     'status' => 'Active',
     'year' => '2011'
 );
@@ -246,4 +256,6 @@ $fixtures->insertAdmin($admin);
 
 $fixtures->dropTableLeague();
 $fixtures->createTableLeague();
-$fixtures->insertLeague($league);
+$fixtures->insertLeague($league1);
+$fixtures->insertLeague($league2);
+$fixtures->insertLeague($league3);

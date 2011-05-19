@@ -1,14 +1,22 @@
 {% extends "layout.html.twig" %}
 {% block body %}
     {% if session == null %}
-        Registro <a href='register.php'>aqui</a> <br />
-        Autentificacion <a href='login.php'>aqui</a> <br />
-        Busqueda <a href='find.php'>aqui</a> <br />
-        Panel de administracion <a href='loginAdmin.php'>aqui</a>
+Sign up<a href='register.php'>aqui</a> <br />
+Login <a href='login.php'>aqui</a> <br />
+Search <a href='find.php'>aqui</a> <br />
+Admin panel <a href='loginAdmin.php'>aqui</a>
     {% else %}
-        Hola {{session.userName}}
-        <br /><br />
-        <a href='logout.php'>Log out</a>
+        {% if session.userName == 'admin' %} 
+Sign up <a href='register.php'>here</a> <br />
+Login <a href='login.php'>here</a> <br />
+Search <a href='find.php'>here</a> <br />
+Admin panel <a href='loginAdmin.php'>here</a> <br />
+League manager <a href='leagues.php'>here</a>
+        {% else %}
+Hola {{session.userName}}
+        {% endif %}
+<br /><br />
+<a href='logout.php'>Log out</a>
     {% endif %}
 {% endblock %}
 
