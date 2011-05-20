@@ -1,0 +1,37 @@
+{% extends "layout.html.twig" %}
+{% block head %}
+<script type="text/javascript" src="js/ajax.js"></script>
+    {{parent()}}
+{% endblock %}
+{% block body %}
+<form name="form" id="form" class="form" action="updateLeague.php" method="post">
+    <fieldset>
+        <legend>
+            <span>Leagues</span>
+        </legend>
+                <input type='hidden' id='id' name='id' value='{{leagueData.id}}' />
+        <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" value='{{leagueData.name}}' type="text" />
+        </div>
+        <div>
+            <label for="year">Start year</label>
+            <input id="year" name="year" value='{{leagueData.year}}' type="text" />
+        </div>
+        <div>
+            <label for="status">Status</label>
+            <input id="status" name="status" value='{{leagueData.status}}' type="text" />
+        </div>
+    </fieldset>
+    <fieldset class='submit'>
+        <input name='submit' id='submit' value='Guardar' type='submit' class='button'/>
+    </fieldset>
+</form>
+<br />
+<form name='form' id='form' class='form' action='deleteLeague.php' onsubmit='return validate(this)' method='post'>
+    <input type='hidden' id='id' name='id' value='{{leagueData.id}}' />
+    <input name='submit' id='submit' value='Eliminar' type='submit' class='button'/>
+</form>
+<br />
+<a href='index.php'>Volver</a>
+{% endblock %}

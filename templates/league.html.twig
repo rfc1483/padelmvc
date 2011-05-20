@@ -33,13 +33,13 @@
     <table cellspacing='0' cellpading='0'>
         <tr class='encabezado'>
             <td class="{{ league.headerClass }}" onclick="leagueSortBy({{ league.sortName }})">
-                <a><img src="{{ league.flecha }}" /> {{ league.header.name }}</a>
+                <a><img src="{{ league.arrowName }}" /> {{ league.header.name }}</a>
             </td>
             <td class="{{ league.headerClass }}" onclick="leagueSortBy({{ league.sortYear }})">
-                <a><img src="{{ league.flecha }}" /> {{ league.header.year }}</a>
+                <a><img src="{{ league.arrowYear }}" /> {{ league.header.year }}</a>
             </td>
             <td class="{{ league.headerClass }}" onclick="leagueSortBy({{ league.sortStatus }})">
-                <a><img src="{{ league.flecha }}" /> {{ league.header.status }}</a>
+                <a><img src="{{ league.arrowStatus }}" /> {{ league.header.status }}</a>
             </td>
         </tr>
     {% endif %}

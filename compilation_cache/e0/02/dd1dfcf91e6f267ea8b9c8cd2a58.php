@@ -86,7 +86,7 @@ class __TwigTemplate_e002dd1dfcf91e6f267ea8b9c8cd2a58 extends Twig_Template
             echo ")\">
                 <a><img src=\"";
             // line 36
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context['league']) ? $context['league'] : null), "flecha", array(), "any", false), "html");
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context['league']) ? $context['league'] : null), "arrowName", array(), "any", false), "html");
             echo "\" /> ";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context['league']) ? $context['league'] : null), "header", array(), "any", false), "name", array(), "any", false), "html");
             echo "</a>
@@ -99,7 +99,7 @@ class __TwigTemplate_e002dd1dfcf91e6f267ea8b9c8cd2a58 extends Twig_Template
             echo ")\">
                 <a><img src=\"";
             // line 39
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context['league']) ? $context['league'] : null), "flecha", array(), "any", false), "html");
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context['league']) ? $context['league'] : null), "arrowYear", array(), "any", false), "html");
             echo "\" /> ";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context['league']) ? $context['league'] : null), "header", array(), "any", false), "year", array(), "any", false), "html");
             echo "</a>
@@ -112,7 +112,7 @@ class __TwigTemplate_e002dd1dfcf91e6f267ea8b9c8cd2a58 extends Twig_Template
             echo ")\">
                 <a><img src=\"";
             // line 42
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context['league']) ? $context['league'] : null), "flecha", array(), "any", false), "html");
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context['league']) ? $context['league'] : null), "arrowStatus", array(), "any", false), "html");
             echo "\" /> ";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context['league']) ? $context['league'] : null), "header", array(), "any", false), "status", array(), "any", false), "html");
             echo "</a>

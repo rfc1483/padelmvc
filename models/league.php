@@ -6,15 +6,22 @@ class League {
     private $field;
     private $sort;
     private $name;
+    private $year;
+    private $status;
     private $criteria;
-    private $sortName;
-    private $sortYear;
-    private $sortStatus;
     private $pageMode;
-    private $flecha;
+    private $arrowName;
+    private $arrowYear;
+    private $arrowStatus;
     private $header;
     private $headerClass;
     private $row;
+    private $sortOrderName;
+    private $sortOrderYear;
+    private $sortOrderStatus;
+    private $sortName;
+    private $sortYear;
+    private $sortStatus;
 
     public function __construct() {
         if ($this->showTable() == true) {
@@ -62,6 +69,7 @@ class League {
         $this->refresh = false;
         if (isset($_GET['field']) and isset($_GET['sort'])) {
             $this->refresh = true;
+
             extract($_GET);
             $this->field = $field;
             $this->sort = $sort;
@@ -86,31 +94,57 @@ class League {
         }
 
         $this->header = new Headers();
-        // Defines two arrays, one for the field's names of the table
-        // and the other for the headers.
-        // Creating the columns
-        $this->toogleSort();
+        $this->sortOrderName = $this->sort;
+        $this->sortOrderName = $this->sortOrderYear = $this->sortOrderStatus = $this->sort;
+        $this->arrowName = $this->arrowYear = $this->arrowStatus = 'img/arrow_down.gif';
+
         $this->headerClass = "encabezado_selec";
-        print $foo = ($hour < 12) ? "Good morning!" : "Good afternoon!";
-        
-        $this->sortName = ($this->field == 'name') ? 
+        $this->sortName = "'name','$this->sortOrderName','$this->name','$this->year','$this->status'";
+        $this->sortYear = "'year','$this->sortOrderYear','$this->name','$this->year','$this->status'";
+        $this->sortStatus = "'status','$this->sortOrderStatus','$this->name','$this->year','$this->status'";
+
         if ($this->field == 'name') {
-            $this->sortName = "'$this->field','$this->sort','$this->name'";
+            $this->toogleSortName();
+            $this->sortName = "'name','$this->sortOrderName','$this->name','$this->year','$this->status'";
         } else if ($this->field == 'year') {
-            $this->sortYear = "'$this->field','$this->sort','$this->name'";
+            $this->toogleSortYear();
+            $this->sortYear = "'year','$this->sortOrderYear','$this->name','$this->year','$this->status'";
         } else if ($this->field == 'status') {
-            $this->sortStatus = "'$this->field','$this->sort','$this->name'";
+            $this->toogleSortStatus();
+            $this->sortStatus = "'status','$this->sortOrderStatus','$this->name','$this->year','$this->status'";
         }
     }
 
     // Toogling the sort value
-    private function toogleSort() {
-        if ($this->sort == "DESC") {
-            $this->sort = "ASC";
-            $this->flecha = "img/arrow_down.gif";
+    private function toogleSortName() {
+        if ($this->sortOrderName == "DESC") {
+            $this->sortOrderName = "ASC";
+            $this->arrowName = "img/arrow_down.gif";
         } else {
-            $this->sort = "DESC";
-            $this->flecha = "img/arrow_up.gif";
+            $this->sortOrderName = "DESC";
+            $this->arrowName = "img/arrow_up.gif";
+        }
+    }
+
+    // Toogling the sort value
+    private function toogleSortYear() {
+        if ($this->sortOrderYear == "DESC") {
+            $this->sortOrderYear = "ASC";
+            $this->arrowYear = "img/arrow_down.gif";
+        } else {
+            $this->sortOrderYear = "DESC";
+            $this->arrowYear = "img/arrow_up.gif";
+        }
+    }
+
+    // Toogling the sort value
+    private function toogleSortStatus() {
+        if ($this->sortOrderStatus == "DESC") {
+            $this->sortOrderStatus = "ASC";
+            $this->arrowStatus = "img/arrow_down.gif";
+        } else {
+            $this->sortOrderStatus = "DESC";
+            $this->arrowStatus = "img/arrow_up.gif";
         }
     }
 
@@ -125,6 +159,7 @@ class League {
     }
 
     private function getRows() {
+
         // Database connection data. 
         require_once 'lib/database.php';
         // We do the team's query sorting by the 'asc' or 'desc' field
@@ -137,9 +172,8 @@ class League {
                 $this->criteria .= " AND year='$this->year' ";
             }
             if (!empty($this->status)) {
-                $this->status .= " AND status='$this->status' ";
+                $this->criteria .= " AND status='$this->status' ";
             }
-
             $this->showDataRow();
         } catch (PDOException $e) {
             echo "I'm sorry, Dave. I'm afraid I can't do that. <br />";
@@ -157,11 +191,6 @@ class League {
         $this->row = $sth->fetchall();
     }
 
-}
-
-class sortCriteria {
-                $this->sortStatus = "'$this->field','$this->sort','$this->name'";
-    private
 }
 
 class Headers {

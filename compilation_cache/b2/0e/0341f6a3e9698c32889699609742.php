@@ -48,74 +48,75 @@ class __TwigTemplate_b20e0341f6a3e9698c32889699609742 extends Twig_Template
     {
         // line 7
         echo "<form name='form' id='form' class='form' action='update.php' onsubmit='return validate(this)' method='post'>
+    
     <fieldset>
         <legend>
             <span>Equipo</span>
         </legend>
         <input type='hidden' id='id' name='id' value='";
-        // line 12
+        // line 13
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context['teamData']) ? $context['teamData'] : null), "id", array(), "any", false), "html");
         echo "' />
         <div>
             <label for='name1'>Nombre primer jugador</label>
             <input id='name1' name='name1' id='name1' value='";
-        // line 15
+        // line 16
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context['teamData']) ? $context['teamData'] : null), "name1", array(), "any", false), "html");
         echo "' type='text' />
         </div>
         <div>
             <label for='surname1'>Apellido primer jugador</label>
             <input name='surname1' id='surname1' value='";
-        // line 19
+        // line 20
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context['teamData']) ? $context['teamData'] : null), "surname1", array(), "any", false), "html");
         echo "' type='text' />
         </div>
         <div>
             <label for='telefono1'>Telefono primer jugador</label>
             <input name='phone1' id='phone1' value='";
-        // line 23
+        // line 24
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context['teamData']) ? $context['teamData'] : null), "phone1", array(), "any", false), "html");
         echo "' type='text' />
         </div>
         <div>
             <label for='email1'>E-mail primer jugador</label>
             <input name='email1' id='email1' value='";
-        // line 27
+        // line 28
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context['teamData']) ? $context['teamData'] : null), "email1", array(), "any", false), "html");
         echo "' type='text' />
         </div>
         <div>
             <label for='name2'>Nombre segundo jugador</label>
             <input name='name2' id='name2' value='";
-        // line 31
+        // line 32
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context['teamData']) ? $context['teamData'] : null), "name2", array(), "any", false), "html");
         echo "' type='text' />
         </div>
         <div>
             <label for='surname2'>Apellido segundo jugador</label>
             <input name='surname2' id='surname2' value='";
-        // line 35
+        // line 36
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context['teamData']) ? $context['teamData'] : null), "surname2", array(), "any", false), "html");
         echo "' type='text' />
         </div>
         <div>
             <label for='telefono2'>Telefono segundo jugador</label>
             <input name='phone2' id='phone2' value='";
-        // line 39
+        // line 40
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context['teamData']) ? $context['teamData'] : null), "phone2", array(), "any", false), "html");
         echo "' type='text' />
         </div>
         <div>
             <label for='email2'>E-mail segundo jugador</label>
             <input name='email2' id='email2' value='";
-        // line 43
+        // line 44
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context['teamData']) ? $context['teamData'] : null), "email2", array(), "any", false), "html");
         echo "' type='text' />
         </div>
         <div>
             <label for='userName'>Nombre de usuario</label>
             <input name='userName' id='userName' value='";
-        // line 47
+        // line 48
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context['teamData']) ? $context['teamData'] : null), "userName", array(), "any", false), "html");
         echo "' type='text' />
         </div>
@@ -127,7 +128,7 @@ class __TwigTemplate_b20e0341f6a3e9698c32889699609742 extends Twig_Template
 <br />
 <form name='form' id='form' class='form' action='delete.php' onsubmit='return validate(this)' method='post'>
     <input type='hidden' id='id' name='id' value='";
-        // line 56
+        // line 57
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context['teamData']) ? $context['teamData'] : null), "id", array(), "any", false), "html");
         echo "' />
     <input name='submit' id='submit' value='Eliminar' type='submit' class='button'/>

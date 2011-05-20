@@ -19,8 +19,8 @@ function sortBy(field, sort, name, surname){
     //especificamos en div donde se mostrara el resultado
     divFind = document.getElementById('find');
     ajax=Ajax();
-    //especificamos el archivo que realizara el listado
-    //y enviamos las dos variables: field y sort
+    // Sets the file that will make the listing and we send the two
+    // variables: field and sort
     ajax.open("GET", "find.php?field="+field+"&sort="+sort+"&name="+name
         +"&surname="+surname);
     ajax.onreadystatechange=function() {
@@ -31,12 +31,12 @@ function sortBy(field, sort, name, surname){
     ajax.send(null)
 }
 
-function leagueSortBy(field, sort, name){
-    //especificamos en div donde se mostrara el resultado
+function leagueSortBy(field, sort, name, year, status){
+    // We specify in the div where the result will be shown    
     divFind = document.getElementById('league');
     ajax=Ajax();
-    //especificamos el archivo que realizara el listado
-    //y enviamos las dos variables: field y sort
+    // Sets the file that will make the listing and we send the two
+    // variables: field and sort
     ajax.open("GET", "league.php?field="+field+"&sort="+sort+"&name="+name+"&year="+year+"&status="+status);
     ajax.onreadystatechange=function() {
         if (ajax.readyState==4) {
