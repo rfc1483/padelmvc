@@ -5,3 +5,4 @@ SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in you
             phone2 = 'asdf',
     ' at line 6
 SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'padel.admin' doesn't exist

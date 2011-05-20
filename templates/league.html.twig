@@ -1,0 +1,64 @@
+{% extends "layout.html.twig" %}
+{% block head %}
+<script type="text/javascript" src="js/ajax.js"></script>
+    {{parent()}}
+{% endblock %}
+{% block body %}
+<div id="league">
+    <form name="form" id="form" class="form" action="league.php" method="post">
+        <fieldset>
+            <legend>
+                <span>Leagues</span>
+            </legend>
+            <input type="hidden" name="page_mode" id="page_mode" value="find" />
+            <div>
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" />
+            </div>
+            <div>
+                <label for="year">Start year</label>
+                <input id="year" name="year" type="text" />
+            </div>
+            <div>
+                <label for="status">Status</label>
+                <input id="status" name="status" type="text" />
+            </div>
+        </fieldset>
+        <fieldset class="submit">
+            <input name="submit" id="submit" value="Find" type="submit" class="button"/>
+        </fieldset>
+    </form>
+    <br />
+        {% if league.showTable == true %}
+    <table cellspacing='0' cellpading='0'>
+        <tr class='encabezado'>
+            <td class="{{ league.headerClass }}" onclick="leagueSortBy({{ league.sortName }})">
+                <a><img src="{{ league.flecha }}" /> {{ league.header.name }}</a>
+            </td>
+            <td class="{{ league.headerClass }}" onclick="leagueSortBy({{ league.sortYear }})">
+                <a><img src="{{ league.flecha }}" /> {{ league.header.year }}</a>
+            </td>
+            <td class="{{ league.headerClass }}" onclick="leagueSortBy({{ league.sortStatus }})">
+                <a><img src="{{ league.flecha }}" /> {{ league.header.status }}</a>
+            </td>
+        </tr>
+    {% endif %}
+
+    {% for row in league.row %}
+        <tr onclick = "document.location='manageLeague.php?id={{row.id}}';"> 
+            <td>
+            {{row.name}}
+            </td>
+            <td>
+            {{row.year}}
+            </td>
+            <td>
+            {{row.status}}
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+    <br />
+    <a href='index.php'>Volver</a>
+</div>
+{% endblock %}

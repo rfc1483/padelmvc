@@ -228,19 +228,19 @@ $admin = array(
 );
 
 $league1 = array(
-    'name' => 'First league',
+    'name' => 'League A',
     'status' => 'Active',
-    'year' => '2011'
+    'year' => '2010'
 );
 $league2 = array(
-    'name' => 'Second league',
+    'name' => 'League C',
     'status' => 'Active',
     'year' => '2011'
 );
 $league3 = array(
-    'name' => 'Third league',
-    'status' => 'Active',
-    'year' => '2011'
+    'name' => 'League B',
+    'status' => 'Inactive',
+    'year' => '2009'
 );
 
 $fixtures = new Fixtures();
