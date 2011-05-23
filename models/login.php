@@ -37,7 +37,7 @@ class Login {
                 );
                 echo $this->userName;
                 echo $this->password;
-                $sql = "SELECT * FROM $this->tableName WHERE userName=:userName AND password = :password";
+                $sql = "SELECT * FROM $this->tableName WHERE user_name=:userName AND password = :password";
                 $sth = $dbh->prepare($sql);
                 $sth->execute($data);
                 $sth->setFetchMode(PDO::FETCH_ASSOC);
@@ -51,7 +51,7 @@ class Login {
                 $this->errorString = 'Clave o nombre de usuario incorrectos';
             } else {
                 $_SESSION['userId'] = $row['id'];
-                $_SESSION['userName'] = $row['userName'];
+                $_SESSION['userName'] = $row['user_name'];
                 header('Location: index.php');
             }
         }
