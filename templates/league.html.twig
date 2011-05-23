@@ -42,7 +42,7 @@
                 <a><img src="{{ league.arrowStatus }}" /> {{ league.header.status }}</a>
             </td>
         </tr>
-    {% endif %}
+
 
     {% for row in league.row %}
         <tr onclick = "document.location='manageLeague.php?id={{row.id}}';"> 
@@ -59,6 +59,7 @@
     {% endfor %}
     </table>
     <br />
-    <a href='index.php'>Volver</a>
+        {% endif %}
+    <a href='index.php'>Back</a>
 </div>
 {% endblock %}

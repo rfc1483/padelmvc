@@ -79,7 +79,7 @@ class __TwigTemplate_4a29ecb07f00297076169eafb82724f9 extends Twig_Template
         </div>
     </fieldset>
     <fieldset class='submit'>
-        <input name='submit' id='submit' value='Guardar' type='submit' class='button'/>
+        <input name='submit' id='submit' value='Save' type='submit' class='button'/>
     </fieldset>
 </form>
 <br />
@@ -88,10 +88,10 @@ class __TwigTemplate_4a29ecb07f00297076169eafb82724f9 extends Twig_Template
         // line 32
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context['leagueData']) ? $context['leagueData'] : null), "id", array(), "any", false), "html");
         echo "' />
-    <input name='submit' id='submit' value='Eliminar' type='submit' class='button'/>
+    <input name='submit' id='submit' value='Delete' type='submit' class='button'/>
 </form>
 <br />
-<a href='index.php'>Volver</a>
+<a href='index.php'>Back</a>
 ";
     }
 

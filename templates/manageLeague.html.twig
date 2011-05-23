@@ -24,14 +24,18 @@
         </div>
     </fieldset>
     <fieldset class='submit'>
-        <input name='submit' id='submit' value='Guardar' type='submit' class='button'/>
+        <input name='submit' id='submit' value='Save' type='submit' class='button'/>
     </fieldset>
 </form>
 <br />
 <form name='form' id='form' class='form' action='deleteLeague.php' onsubmit='return validate(this)' method='post'>
     <input type='hidden' id='id' name='id' value='{{leagueData.id}}' />
-    <input name='submit' id='submit' value='Eliminar' type='submit' class='button'/>
+    <input name='submit' id='submit' value='Delete' type='submit' class='button'/>
+</form>
+<form name='form' id='form' class='form' action='stages.php' onsubmit='return validate(this)' method='post'>
+    <input type='hidden' id='id' name='id' value='{{leagueData.id}}' />
+    <input name='submit' id='submit' value='Delete' type='submit' class='button'/>
 </form>
 <br />
-<a href='index.php'>Volver</a>
+<a href='index.php'>Back</a>
 {% endblock %}

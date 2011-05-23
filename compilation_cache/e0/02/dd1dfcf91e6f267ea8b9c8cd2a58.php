@@ -118,47 +118,48 @@ class __TwigTemplate_e002dd1dfcf91e6f267ea8b9c8cd2a58 extends Twig_Template
             echo "</a>
             </td>
         </tr>
+
+
     ";
-        }
-        // line 46
-        echo "
-    ";
-        // line 47
-        $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context['league']) ? $context['league'] : null), "row", array(), "any", false));
-        foreach ($context['_seq'] as $context['_key'] => $context['row']) {
-            // line 48
-            echo "        <tr onclick = \"document.location='manageLeague.php?id=";
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context['row']) ? $context['row'] : null), "id", array(), "any", false), "html");
-            echo "';\"> 
+            // line 47
+            $context['_parent'] = (array) $context;
+            $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context['league']) ? $context['league'] : null), "row", array(), "any", false));
+            foreach ($context['_seq'] as $context['_key'] => $context['row']) {
+                // line 48
+                echo "        <tr onclick = \"document.location='manageLeague.php?id=";
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context['row']) ? $context['row'] : null), "id", array(), "any", false), "html");
+                echo "';\"> 
             <td>
             ";
-            // line 50
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context['row']) ? $context['row'] : null), "name", array(), "any", false), "html");
-            echo "
+                // line 50
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context['row']) ? $context['row'] : null), "name", array(), "any", false), "html");
+                echo "
             </td>
             <td>
             ";
-            // line 53
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context['row']) ? $context['row'] : null), "year", array(), "any", false), "html");
-            echo "
+                // line 53
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context['row']) ? $context['row'] : null), "year", array(), "any", false), "html");
+                echo "
             </td>
             <td>
             ";
-            // line 56
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context['row']) ? $context['row'] : null), "status", array(), "any", false), "html");
-            echo "
+                // line 56
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context['row']) ? $context['row'] : null), "status", array(), "any", false), "html");
+                echo "
             </td>
         </tr>
     ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['row'], $context['_parent'], $context['loop']);
-        $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 60
-        echo "    </table>
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['row'], $context['_parent'], $context['loop']);
+            $context = array_merge($_parent, array_intersect_key($context, $_parent));
+            // line 60
+            echo "    </table>
     <br />
-    <a href='index.php'>Volver</a>
+        ";
+        }
+        // line 63
+        echo "    <a href='index.php'>Back</a>
 </div>
 ";
     }
