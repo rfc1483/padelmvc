@@ -26,6 +26,7 @@ class Login {
         session_start();
         $page_mode = isset($_POST['page_mode']) ? $_POST['page_mode'] : '';
         if ($page_mode == 'login') {
+            echo "page mode = login!";
             $this->password = sha1($_POST['password']);
             $this->userName = $_POST['userName'];
 
@@ -50,9 +51,9 @@ class Login {
             if (!$row) {
                 $this->errorString = 'Clave o nombre de usuario incorrectos';
             } else {
-                $_SESSION['userId'] = $row['id'];
+                $_SESSION['userId'] = $row['team_id'];
                 $_SESSION['userName'] = $row['user_name'];
-                header('Location: index.php');
+//                header('Location: index.php');
             }
         }
     }
