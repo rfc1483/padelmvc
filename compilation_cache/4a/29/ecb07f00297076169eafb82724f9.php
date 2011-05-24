@@ -52,9 +52,9 @@ class __TwigTemplate_4a29ecb07f00297076169eafb82724f9 extends Twig_Template
         <legend>
             <span>Leagues</span>
         </legend>
-                <input type='hidden' id='id' name='id' value='";
+        <input type='hidden' id='id' name='id' value='";
         // line 12
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context['leagueData']) ? $context['leagueData'] : null), "id", array(), "any", false), "html");
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context['leagueData']) ? $context['leagueData'] : null), "league_id", array(), "any", false), "html");
         echo "' />
         <div>
             <label for=\"name\">Name</label>
@@ -86,9 +86,18 @@ class __TwigTemplate_4a29ecb07f00297076169eafb82724f9 extends Twig_Template
 <form name='form' id='form' class='form' action='deleteLeague.php' onsubmit='return validate(this)' method='post'>
     <input type='hidden' id='id' name='id' value='";
         // line 32
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context['leagueData']) ? $context['leagueData'] : null), "id", array(), "any", false), "html");
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context['leagueData']) ? $context['leagueData'] : null), "league_id", array(), "any", false), "html");
         echo "' />
     <input name='submit' id='submit' value='Delete' type='submit' class='button'/>
+</form>
+<br />
+<br />
+<form name='form' id='form' class='form' action='stages.php' onsubmit='return validate(this)' method='post'>
+    <input type='hidden' id='id' name='id' value='";
+        // line 38
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context['leagueData']) ? $context['leagueData'] : null), "league_id", array(), "any", false), "html");
+        echo "' />
+    <input name='submit' id='submit' value='Stages' type='submit' class='button'/>
 </form>
 <br />
 <a href='index.php'>Back</a>

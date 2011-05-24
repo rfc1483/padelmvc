@@ -1,0 +1,14 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+{% if empty == true %}
+Id: {{leagueId}}
+There are no stages in this league at the moment. 
+{% endif %}
+<fieldset class='submit'>
+    <form name='form' id='form' class='form' action='stagesManager.php' method='post'>
+        <input type='hidden' id='id' name='id' value='{{leagueId}}' />
+        <input name='submit' id='submit' value='Add' type='submit' class='button'/>
+    </form>
+</fieldset>
+<a href='index.php'>Back</a>
+{% endblock %}

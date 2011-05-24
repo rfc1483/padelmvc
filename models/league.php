@@ -184,7 +184,7 @@ class League {
 
     private function showDataRow() {
         $dbh = new Database();
-        $sql = "SELECT * FROM league $this->criteria ORDER BY $this->field $this->sort";
+        $sql = "SELECT * FROM leagues $this->criteria ORDER BY $this->field $this->sort";
         $sth = $dbh->prepare($sql);
         $sth->execute();
         $sth->fetchMode = PDO::FETCH_ASSOC;

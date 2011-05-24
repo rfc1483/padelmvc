@@ -55,7 +55,7 @@ class __TwigTemplate_b20e0341f6a3e9698c32889699609742 extends Twig_Template
         </legend>
         <input type='hidden' id='id' name='id' value='";
         // line 13
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context['teamData']) ? $context['teamData'] : null), "id", array(), "any", false), "html");
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context['teamData']) ? $context['teamData'] : null), "team_id", array(), "any", false), "html");
         echo "' />
         <div>
             <label for='name1'>Nombre primer jugador</label>
@@ -117,7 +117,7 @@ class __TwigTemplate_b20e0341f6a3e9698c32889699609742 extends Twig_Template
             <label for='userName'>Nombre de usuario</label>
             <input name='userName' id='userName' value='";
         // line 48
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context['teamData']) ? $context['teamData'] : null), "userName", array(), "any", false), "html");
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context['teamData']) ? $context['teamData'] : null), "user_name", array(), "any", false), "html");
         echo "' type='text' />
         </div>
     </fieldset>
@@ -129,7 +129,7 @@ class __TwigTemplate_b20e0341f6a3e9698c32889699609742 extends Twig_Template
 <form name='form' id='form' class='form' action='delete.php' onsubmit='return validate(this)' method='post'>
     <input type='hidden' id='id' name='id' value='";
         // line 57
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context['teamData']) ? $context['teamData'] : null), "id", array(), "any", false), "html");
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context['teamData']) ? $context['teamData'] : null), "team_id", array(), "any", false), "html");
         echo "' />
     <input name='submit' id='submit' value='Eliminar' type='submit' class='button'/>
 </form>

@@ -8,10 +8,12 @@ class Login {
     private $password;
     private $userName;
     private $tableName;
+    private $tableId;
 
-    function __construct($tableName) {
+    function __construct($tableName, $tableId) {
         $this->errorString = '';
         $this->tableName = $tableName;
+        $this->tableId = $tableId;
     }
 
     public function getErrorString() {
@@ -26,7 +28,6 @@ class Login {
         session_start();
         $page_mode = isset($_POST['page_mode']) ? $_POST['page_mode'] : '';
         if ($page_mode == 'login') {
-            echo "page mode = login!";
             $this->password = sha1($_POST['password']);
             $this->userName = $_POST['userName'];
 
@@ -36,8 +37,6 @@ class Login {
                     ':userName' => $this->userName,
                     ':password' => $this->password
                 );
-                echo $this->userName;
-                echo $this->password;
                 $sql = "SELECT * FROM $this->tableName WHERE user_name=:userName AND password = :password";
                 $sth = $dbh->prepare($sql);
                 $sth->execute($data);
@@ -51,9 +50,9 @@ class Login {
             if (!$row) {
                 $this->errorString = 'Clave o nombre de usuario incorrectos';
             } else {
-                $_SESSION['userId'] = $row['team_id'];
+                $_SESSION['userId'] = $row["$this->tableId"];
                 $_SESSION['userName'] = $row['user_name'];
-//                header('Location: index.php');
+                header('Location: index.php');
             }
         }
     }

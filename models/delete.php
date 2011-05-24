@@ -5,11 +5,11 @@ class Delete {
     public function __construct($id) {
         try {
             require_once('lib/database.php');
-            $data = array(':id' => $id,);
+            $data = array(':id' => $id);
 
             $dbh = new Database();
 
-            $sql = "DELETE FROM team WHERE id = :id
+            $sql = "DELETE FROM teams WHERE team_id = :id
             ";
 
             $sth = $dbh->prepare($sql);

@@ -54,11 +54,11 @@ class UpdateLeague {
 
             $dbh = new Database();
 
-            $sql = "UPDATE league SET 
+            $sql = "UPDATE leagues SET 
             name = :name,
             year = :year,
             status = :status
-            WHERE id = :id
+            WHERE league_id = :id
             ";
 
             $sth = $dbh->prepare($sql);

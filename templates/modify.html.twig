@@ -10,7 +10,7 @@
         <legend>
             <span>Equipo</span>
         </legend>
-        <input type='hidden' id='id' name='id' value='{{teamData.id}}' />
+        <input type='hidden' id='id' name='id' value='{{teamData.team_id}}' />
         <div>
             <label for='name1'>Nombre primer jugador</label>
             <input id='name1' name='name1' id='name1' value='{{teamData.name1}}' type='text' />
@@ -45,7 +45,7 @@
         </div>
         <div>
             <label for='userName'>Nombre de usuario</label>
-            <input name='userName' id='userName' value='{{teamData.userName}}' type='text' />
+            <input name='userName' id='userName' value='{{teamData.user_name}}' type='text' />
         </div>
     </fieldset>
     <fieldset class='submit'>
@@ -54,7 +54,7 @@
 </form>
 <br />
 <form name='form' id='form' class='form' action='delete.php' onsubmit='return validate(this)' method='post'>
-    <input type='hidden' id='id' name='id' value='{{teamData.id}}' />
+    <input type='hidden' id='id' name='id' value='{{teamData.team_id}}' />
     <input name='submit' id='submit' value='Eliminar' type='submit' class='button'/>
 </form>
 <br />

@@ -1,17 +1,13 @@
 {% extends "layout.html.twig" %}
 {% block body %}
     {% if session == null %}
-Login is null!!
 Sign up <a href='register.php'>here</a> <br />
 Login <a href='login.php'>here</a> <br />
 Search <a href='find.php'>here</a> <br />
 Admin panel <a href='loginAdmin.php'>here</a>
     {% else %}
         {% if session.userName == 'admin' %} 
-Sign up <a href='register.php'>here</a> <br />
-Login <a href='login.php'>here</a> <br />
 Search <a href='find.php'>here</a> <br />
-Admin panel <a href='loginAdmin.php'>here</a> <br />
 League manager <a href='league.php'>here</a>
         {% else %}
 Hola {{session.userName}}

@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS `padel`.`admin` ;
 
 CREATE  TABLE IF NOT EXISTS `padel`.`admin` (
   `admin_id` INT NOT NULL AUTO_INCREMENT ,
-  `userName` VARCHAR(255) NULL DEFAULT NULL ,
+  `user_name` VARCHAR(255) NULL DEFAULT NULL ,
   `password` VARCHAR(255) NULL DEFAULT NULL ,
   PRIMARY KEY (`admin_id`) )
 ENGINE = InnoDB
@@ -73,14 +73,14 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `padel`.`stages` ;
 
 CREATE  TABLE IF NOT EXISTS `padel`.`stages` (
-  `stages_id` INT NOT NULL AUTO_INCREMENT ,
+  `stage_id` INT NOT NULL AUTO_INCREMENT ,
+  `number` INT NULL ,
   `start_date` VARCHAR(255) NULL ,
   `finish_date` VARCHAR(255) NULL ,
   `year` VARCHAR(255) NULL ,
-  `number` INT NULL ,
   `status` VARCHAR(255) NULL ,
   `league_league_id` INT NOT NULL ,
-  PRIMARY KEY (`stages_id`) ,
+  PRIMARY KEY (`stage_id`) ,
   INDEX `fk_stages_league1` (`league_league_id` ASC) ,
   CONSTRAINT `fk_stages_league1`
     FOREIGN KEY (`league_league_id` )
@@ -103,7 +103,7 @@ CREATE  TABLE IF NOT EXISTS `padel`.`divisions` (
   INDEX `fk_divisions_stages1` (`stages_stages_id` ASC) ,
   CONSTRAINT `fk_divisions_stages1`
     FOREIGN KEY (`stages_stages_id` )
-    REFERENCES `padel`.`stages` (`stages_id` )
+    REFERENCES `padel`.`stages` (`stage_id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -194,7 +194,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `padel`;
-INSERT INTO `padel`.`admin` (`admin_id`, `userName`, `password`) VALUES (1, 'admin', 'f865b53623b121fd34ee5426c792e5c33af8c227');
+INSERT INTO `padel`.`admin` (`admin_id`, `user_name`, `password`) VALUES (1, 'admin', 'f865b53623b121fd34ee5426c792e5c33af8c227');
 
 COMMIT;
 

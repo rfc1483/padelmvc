@@ -9,7 +9,7 @@
         <legend>
             <span>Leagues</span>
         </legend>
-                <input type='hidden' id='id' name='id' value='{{leagueData.id}}' />
+        <input type='hidden' id='id' name='id' value='{{leagueData.league_id}}' />
         <div>
             <label for="name">Name</label>
             <input id="name" name="name" value='{{leagueData.name}}' type="text" />
@@ -29,12 +29,14 @@
 </form>
 <br />
 <form name='form' id='form' class='form' action='deleteLeague.php' onsubmit='return validate(this)' method='post'>
-    <input type='hidden' id='id' name='id' value='{{leagueData.id}}' />
+    <input type='hidden' id='id' name='id' value='{{leagueData.league_id}}' />
     <input name='submit' id='submit' value='Delete' type='submit' class='button'/>
 </form>
+<br />
+<br />
 <form name='form' id='form' class='form' action='stages.php' onsubmit='return validate(this)' method='post'>
-    <input type='hidden' id='id' name='id' value='{{leagueData.id}}' />
-    <input name='submit' id='submit' value='Delete' type='submit' class='button'/>
+    <input type='hidden' id='id' name='id' value='{{leagueData.league_id}}' />
+    <input name='submit' id='submit' value='Stages' type='submit' class='button'/>
 </form>
 <br />
 <a href='index.php'>Back</a>

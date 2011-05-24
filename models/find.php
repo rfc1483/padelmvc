@@ -140,7 +140,7 @@ class Find {
 
     private function showDataRow() {
         $dbh = new Database();
-        $sql = "SELECT * FROM team $this->criteria ORDER BY $this->field $this->sort";
+        $sql = "SELECT * FROM teams $this->criteria ORDER BY $this->field $this->sort";
         $sth = $dbh->prepare($sql);
         $sth->execute();
         $sth->fetchMode = PDO::FETCH_ASSOC;
@@ -148,5 +148,3 @@ class Find {
     }
 
 }
-
-?>

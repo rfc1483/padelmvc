@@ -1,5 +1,11 @@
-<?php $title = 'Gracias' ?>
-<?php ob_start() ?>
-<?php echo $result; ?>
-<?php $content = ob_get_clean() ?>
-<?php include 'layout.php' ?>
+<?php
+
+require_once('bootstrap.php');
+
+$template = $twig->loadTemplate('thankyou.html.twig');
+
+$pageTitle = 'Thank you';
+$template->display(array(
+    'pageTitle' => $pageTitle
+));
+?>

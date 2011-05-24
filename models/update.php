@@ -59,7 +59,7 @@ class Update {
 
             $dbh = new Database();
 
-            $sql = "UPDATE team SET 
+            $sql = "UPDATE teams SET 
             name1 = :name1,
             surname1 = :surname1,
             phone1 = :phone1,
@@ -68,8 +68,8 @@ class Update {
             surname2 = :surname2,
             phone2 = :phone2,
             email2 = :email2,
-            username = :userName
-            WHERE id = :id
+            user_name = :userName
+            WHERE team_id = :id
             ";
 
             $sth = $dbh->prepare($sql);

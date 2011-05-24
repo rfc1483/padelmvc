@@ -53,19 +53,20 @@ class Register {
                 ':phone2' => $phone2,
                 ':email2' => $email2,
                 ':userName' => $userName,
-                ':password' => $password
+                ':password' => $password,
+                ':leagueId' => '1'
             );
 
             $dbh = new Database();
-            $sql = "insert into team (name1, surname1, phone1, email1, name2,
-                surname2, phone2, email2, userName, password) 
+            $sql = "insert into teams (name1, surname1, phone1, email1, name2,
+                surname2, phone2, email2, user_name, password, league_league_id) 
                 VALUES (:name1, :surname1, :phone1, :email1, :name2, :surname2, 
-                :phone2, :email2, :userName, :password)";
+                :phone2, :email2, :userName, :password, :leagueId)";
             $sth = $dbh->prepare($sql);
             $sth->execute($data);
             $db = null;
         } catch (PDOException $e) {
-            echo "I'm sorry, Dave. I'm afraid I can't do that.";
+            echo "I'm sorry, Dave. I'm afraid I can't do that. <br />";
             file_put_contents('PDOErrors.txt', $e->getMessage(), FILE_APPEND);
         }
         header('Location: thankyou.php');

@@ -122,7 +122,7 @@ class __TwigTemplate_70b0fc71ff3af018b0f776edf181b549 extends Twig_Template
         foreach ($context['_seq'] as $context['_key'] => $context['row']) {
             // line 61
             echo "        <tr onclick = \"document.location='modify.php?id=";
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context['row']) ? $context['row'] : null), "id", array(), "any", false), "html");
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context['row']) ? $context['row'] : null), "team_id", array(), "any", false), "html");
             echo "';\"> 
             <td>
             ";

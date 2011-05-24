@@ -7,3 +7,19 @@ SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in you
 SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
 SQLSTATE[42S02]: Base table or view not found: 1146 Table 'padel.admin' doesn't existSQLSTATE[42S02]: Base table or view not found: 1146 Table 'padel.team' doesn't existSQLSTATE[42S22]: Column not found: 1054 Unknown column 'user_name' in 'where clause'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'padel.team' doesn't exist
 SQLSTATE[42S02]: Base table or view not found: 1146 Table 'padel.team' doesn't exist
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'user_name' in 'where clause'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'padel.team' doesn't exist
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'padel.team' doesn't exist
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'padel.team' doesn't exist
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'padel.team' doesn't exist
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'padel.team' doesn't exist
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'padel.team' doesn't exist
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'padel.team' doesn't exist
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'padel.league' doesn't exist
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'padel.league' doesn't exist
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'padel.league' doesn't exist
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'where clause'
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'padel.team' doesn't existSQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`padel`.`teams`, CONSTRAINT `fk_team_league1` FOREIGN KEY (`league_league_id`) REFERENCES `leagues` (`league_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`padel`.`teams`, CONSTRAINT `fk_team_league1` FOREIGN KEY (`league_league_id`) REFERENCES `leagues` (`league_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1SQLSTATE[42S02]: Base table or view not found: 1146 Table 'padel.league' doesn't exist
+SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`padel`.`teams`, CONSTRAINT `fk_team_league1` FOREIGN KEY (`league_league_id`) REFERENCES `leagues` (`league_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`padel`.`teams`, CONSTRAINT `fk_team_league1` FOREIGN KEY (`league_league_id`) REFERENCES `leagues` (`league_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`padel`.`teams`, CONSTRAINT `fk_team_league1` FOREIGN KEY (`league_league_id`) REFERENCES `leagues` (`league_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`padel`.`teams`, CONSTRAINT `fk_team_league1` FOREIGN KEY (`league_league_id`) REFERENCES `leagues` (`league_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)

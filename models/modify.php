@@ -13,7 +13,7 @@ class Team {
 
         try {
             $dbh = new Database();
-            $sql = "SELECT * FROM team WHERE id = '$this->teamId'";
+            $sql = "SELECT * FROM teams WHERE team_id = '$this->teamId'";
             $sth = $dbh->prepare($sql);
             $sth->execute();
             $sth->setFetchMode(PDO::FETCH_OBJ);
