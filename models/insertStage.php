@@ -8,17 +8,16 @@ class Stage {
 
     public function __construct(array $stageData) {
         $this->stageData = $this->filterParameters($stageData);
+        $this->insertData();
     }
 
-    public function insertData() {
+    private function insertData() {
         try {
-            echo '<pre>';
-            echo $this->stageData;
             extract($this->stageData);
             $data = array(
                 ':number' => $number,
-                ':start_date' => $start_date,
-                ':finish_date' => $finish_date,
+                ':start_date' => $startDate,
+                ':finish_date' => $finishDate,
                 ':year' => $year,
                 ':status' => $status,
                 ':leagueId' => $leagueId
@@ -35,7 +34,7 @@ class Stage {
             echo "I'm sorry, Dave. I'm afraid I can't do that. <br />";
             file_put_contents('PDOErrors.txt', $e->getMessage(), FILE_APPEND);
         }
-//        header('Location: thankyou.php');
+//       header('Location: thankyou.php');
     }
 
     public

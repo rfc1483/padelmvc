@@ -39,7 +39,7 @@ class __TwigTemplate_6e82366a3167753544d4f63fdd1b05fc extends Twig_Template
         <legend>
             <span>Stage</span>
         </legend>
-        <input type='hidden' id='id' name='id' value='";
+        <input type='hidden' id='leagueId' name='leagueId' value='";
         // line 8
         echo twig_escape_filter($this->env, (isset($context['leagueId']) ? $context['leagueId'] : null), "html");
         echo "' />
@@ -56,7 +56,7 @@ class __TwigTemplate_6e82366a3167753544d4f63fdd1b05fc extends Twig_Template
             <input name='finishDate' id='finishDate' type='text' />
         </div>
         <div>
-            <label for='year'>Year</label>
+            <label for='year'>Start year</label>
             <input name='year' id='year' type='text' />
         </div>
         <div>

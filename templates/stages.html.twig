@@ -1,8 +1,26 @@
 {% extends "layout.html.twig" %}
 {% block body %}
 {% if empty == true %}
-Id: {{leagueId}}
 There are no stages in this league at the moment. 
+{% else %}
+<table cellspacing='0' cellpading='0'>
+    <tr class='encabezado'>
+        <td> Number </td>
+        <td> Start Date </td>
+        <td> Finish Date </td>
+        <td> Year </td>
+        <td> Status </td>
+    </tr>
+    {% for stage in stages %}
+    <tr onclick = "document.location='modifyStage.php?stageId={{stage.stage_id}}&ligueId={{stage.league_league_id}}';"> 
+        <td> {{stage.number}} </td>
+        <td> {{ stage.start_date }} </td>
+        <td> {{ stage.finish_date}} </td>
+        <td> {{ stage.year }} </td>
+        <td> {{ stage.status }} </td>
+    </tr>
+    {% endfor %}
+</table>
 {% endif %}
 <fieldset class='submit'>
     <form name='form' id='form' class='form' action='stagesManager.php' method='post'>

@@ -3,7 +3,6 @@
 require_once 'models/stages.php';
 $leagueId = $_POST['id'];
 $stages = new Stages($leagueId);
-$stagesData = $stages->getStagesData();
-echo $stagesData.league_id;
-$empty = empty($stages_data);
+$stagesData = $stages->stagesData;
+$empty = empty($stagesData);
 require 'views/stages.php';

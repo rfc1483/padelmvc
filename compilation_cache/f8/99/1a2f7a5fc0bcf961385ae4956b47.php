@@ -34,7 +34,7 @@ class __TwigTemplate_f8991a2f7a5fc0bcf961385ae4956b47 extends Twig_Template
     public function block_body($context, array $blocks = array())
     {
         // line 3
-        echo "Thanks for signing up, go <a href='login.php'>here</a> sign in. <br /><br />
+        echo "Thanks for signing up, go <a href='login.php'>here</a> for sign in. <br /><br />
 <a href='index.php'>Back</a>
 ";
     }

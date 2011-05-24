@@ -7,7 +7,7 @@ $template = $twig->loadTemplate('stages.html.twig');
 $pageTitle = 'Stages';
 $template->display(array(
     'pageTitle' => $pageTitle,
-    'stages' => $stagesData,
-    'empty' => $empty
+    'empty' => $empty,
+    'leagueId' => $leagueId,
+    'stages' => $stagesData
 ));
-?>

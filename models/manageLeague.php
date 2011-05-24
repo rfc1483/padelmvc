@@ -24,10 +24,31 @@ class League {
             echo $e->getMessage();
         }
     }
-    
-    public function getLeague() {
-        return $this->league;
+
+    public function __get($property) {
+        if (property_exists($this, $property)) {
+            return $this->$property;
+        }
+    }
+
+    public function __set($property, $value) {
+        echo "Setting $property to value: $value <br />";
+        if (property_exists($this, $property)) {
+            echo "Setting $property to value: $value";
+            $this->$property = $value;
+        }
+
+        return $this;
+    }
+
+    public function __isset($property) {
+        if (property_exists($this, $property)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
+
 ?>

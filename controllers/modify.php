@@ -1,6 +1,6 @@
 <?php
 require_once 'models/modify.php';
 $teamId = $_GET['id'];
-$team = new Team($teamId);
+$stage = new Stage($teamId);
 $teamData = $team->getTeam();
-require 'views/modify.php';
+require_once 'views/modify.php';
