@@ -2,7 +2,7 @@
 
 require_once('lib/database.php');
 
-class UpdateLeague {
+class UpdateDivision {
 
     private $formArray;
 
@@ -45,19 +45,15 @@ class UpdateLeague {
             extract($this->formArray);
 
             $data = array(
-                ':id' => $id,
-                ':name' => $name,
-                ':year' => $year,
-                ':status' => $status
+                ':division_id' => $divisionId,
+                ':level' => $level                
             );
 
             $dbh = new Database();
 
-            $sql = "UPDATE leagues SET 
-            name = :name,
-            year = :year,
-            status = :status
-            WHERE league_id = :id
+            $sql = "UPDATE divisions SET 
+            level = :level
+            WHERE division_id = :division_id
             ";
 
             $sth = $dbh->prepare($sql);
@@ -71,4 +67,3 @@ class UpdateLeague {
     }
 
 }
-

@@ -12,7 +12,7 @@ There are no stages in this league at the moment.
         <td> Status </td>
     </tr>
     {% for stage in stages %}
-    <tr onclick = "document.location='modifyStage.php?stageId={{stage.stage_id}}&ligueId={{stage.league_league_id}}';"> 
+    <tr onclick = "document.location='modifyStage.php?stageId={{stage.stage_id}}';"> 
         <td> {{stage.number}} </td>
         <td> {{ stage.start_date }} </td>
         <td> {{ stage.finish_date}} </td>

@@ -1,6 +1,6 @@
 <?php
 
-class DeleteLeague {
+class DeleteDivision {
 
     public function __construct($id) {
         try {
@@ -9,7 +9,7 @@ class DeleteLeague {
 
             $dbh = new Database();
 
-            $sql = "DELETE FROM leagues WHERE league_id = :id";
+            $sql = "DELETE FROM divisions WHERE division_id = :id";
 
             $sth = $dbh->prepare($sql);
             $sth->execute($data);

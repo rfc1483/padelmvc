@@ -2,17 +2,17 @@
 
 require_once('lib/database.php');
 
-class Stages {
+class Divisions {
 
-    private $stagesData;
+    private $divisionsData;
 
-    function __construct($leagueId) {
+    function __construct($stagesId) {
         $dbh = new Database();        
-        $sql = "SELECT * FROM stages WHERE league_league_id = '$leagueId'";
+        $sql = "SELECT * FROM divisions WHERE stages_stage_id = '$stagesId'";
         $sth = $dbh->prepare($sql);
         $sth->execute();
         $sth->setFetchMode(PDO::FETCH_OBJ);
-        $this->stagesData = $sth->fetchAll();
+        $this->divisionsData = $sth->fetchAll();
     }
 
     public function __get($property) {
@@ -22,9 +22,7 @@ class Stages {
     }
 
     public function __set($property, $value) {
-        echo "Setting $property to value: $value <br />";
         if (property_exists($this, $property)) {
-            echo "Setting $property to value: $value";
             $this->$property = $value;
         }
 

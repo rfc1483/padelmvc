@@ -1,21 +1,21 @@
 <?php
 
-class Stage {
+class Division {
 
-    private $stage;
+    private $division;
 
-    public function __construct($stageId) {
+    public function __construct($divisionId) {
 
         // Database connection data.
         require_once 'lib/database.php';
 
         try {
             $dbh = new Database();
-            $sql = "SELECT * FROM stages WHERE stage_id = '$stageId'";
+            $sql = "SELECT * FROM divisions WHERE division_id = '$divisionId'";
             $sth = $dbh->prepare($sql);
             $sth->execute();
             $sth->setFetchMode(PDO::FETCH_OBJ);
-            $this->stage = $sth->fetch();
+            $this->division = $sth->fetch();
         } catch (PDOException $e) {
             echo "I'm sorry, Dave. I'm afraid I can't do that.<br />";
             file_put_contents('PDOErrors.txt', $e->getMessage() . "\n", FILE_APPEND);

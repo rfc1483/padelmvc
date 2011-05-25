@@ -2,9 +2,9 @@
 
 require_once('bootstrap.php');
 
-$template = $twig->loadTemplate('updateLeague.html.twig');
+$template = $twig->loadTemplate('deleteDivision.html.twig');
 
-$pageTitle = 'League updated';
+$pageTitle = 'Division erased.';
 $template->display(array(
     'pageTitle' => $pageTitle,
 ));

@@ -2,9 +2,9 @@
 
 require_once('bootstrap.php');
 
-$template = $twig->loadTemplate('updateLeague.html.twig');
+$template = $twig->loadTemplate('updateStage.html.twig');
 
-$pageTitle = 'League updated';
+$pageTitle = 'Stage updated';
 $template->display(array(
     'pageTitle' => $pageTitle,
 ));

@@ -1,0 +1,19 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+<form name='form' id='form' class='form' action='insertDivision.php' onsubmit='return validate(this)' method='post'>
+    <fieldset>
+        <legend>
+            <span>Division</span>
+        </legend>
+        <input type='hidden' id='stageId' name='stageId' value='{{stageId}}' />
+        <div>
+            <label for='level'>level</label>
+            <input name='level' id='level' type='text' />
+        </div>
+    </fieldset>
+    <fieldset class='submit'>
+        <input name='submit' id='submit' value='Insert' type='submit' class='button'/>
+    </fieldset>
+</form>
+<a href='index.php'>Back</a>
+{% endblock %}

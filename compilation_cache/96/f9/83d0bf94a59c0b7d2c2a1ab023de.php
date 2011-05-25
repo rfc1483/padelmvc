@@ -34,7 +34,7 @@ class __TwigTemplate_96f983d0bf94a59c0b7d2c2a1ab023de extends Twig_Template
     public function block_body($context, array $blocks = array())
     {
         // line 3
-        echo "<form name='form' id='form' class='form' action='insertStage.php' onsubmit='return validate(this)' method='post'>
+        echo "<form name='form' id='form' class='form' action='updateStage.php' onsubmit='return validate(this)' method='post'>
     <fieldset>
         <legend>
             <span>Stage</span>
@@ -84,9 +84,27 @@ class __TwigTemplate_96f983d0bf94a59c0b7d2c2a1ab023de extends Twig_Template
         </div>
     </fieldset>
     <fieldset class='submit'>
-        <input name='submit' id='submit' value='Insert' type='submit' class='button'/>
+        <input name='submit' id='submit' value='Save' type='submit' class='button'/>
     </fieldset>
 </form>
+<br />
+<form name='form' id='form' class='form' action='deleteStage.php' onsubmit='return validate(this)' method='post'>
+    <input type='hidden' id='id' name='id' value='";
+        // line 37
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context['stage']) ? $context['stage'] : null), "stage_id", array(), "any", false), "html");
+        echo "' />
+    <input name='submit' id='submit' value='Delete' type='submit' class='button'/>
+</form>
+<br />
+<br />
+<form name='form' id='form' class='form' action='divisions.php' onsubmit='return validate(this)' method='post'>
+    <input type='hidden' id='stageId' name='stageId' value='";
+        // line 43
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context['stage']) ? $context['stage'] : null), "stage_id", array(), "any", false), "html");
+        echo "' />
+    <input name='submit' id='submit' value='Divisions' type='submit' class='button'/>
+</form>
+<br />
 <a href='index.php'>Back</a>
 ";
     }

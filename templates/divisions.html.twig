@@ -1,0 +1,24 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+{% if empty == true %}
+There are no divisions in this stage at the moment. 
+{% else %}
+<table cellspacing='0' cellpading='0'>
+    <tr class='encabezado'>
+        <td> Level </td>
+    </tr>
+    {% for division in divisions %}
+    <tr onclick = "document.location='modifyDivision.php?divisionId={{division.division_id}}';"> 
+        <td> {{division.level }} </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+<fieldset class='submit'>
+    <form name='form' id='form' class='form' action='divisionsManager.php' method='post'>
+        <input type='hidden' id='id' name='id' value='{{ stageId }}' />
+        <input name='submit' id='submit' value='Add' type='submit' class='button'/>
+    </form>
+</fieldset>
+<a href='index.php'>Back</a>
+{% endblock %}

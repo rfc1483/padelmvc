@@ -5,3 +5,4 @@ $stageData = $_POST;
 $stage = new Stage($stageData);
 require_once 'views/insertStage.php';
 
+

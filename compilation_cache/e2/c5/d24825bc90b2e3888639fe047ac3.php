@@ -56,8 +56,6 @@ class __TwigTemplate_e2c5d24825bc90b2e3888639fe047ac3 extends Twig_Template
                 // line 15
                 echo "    <tr onclick = \"document.location='modifyStage.php?stageId=";
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context['stage']) ? $context['stage'] : null), "stage_id", array(), "any", false), "html");
-                echo "&ligueId=";
-                echo twig_escape_filter($this->env, $this->getAttribute((isset($context['stage']) ? $context['stage'] : null), "league_league_id", array(), "any", false), "html");
                 echo "';\"> 
         <td> ";
                 // line 16

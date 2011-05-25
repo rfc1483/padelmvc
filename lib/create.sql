@@ -96,13 +96,13 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `padel`.`divisions` ;
 
 CREATE  TABLE IF NOT EXISTS `padel`.`divisions` (
-  `divisions_id` INT NOT NULL AUTO_INCREMENT ,
+  `division_id` INT NOT NULL AUTO_INCREMENT ,
   `level` INT NULL ,
-  `stages_stages_id` INT NOT NULL ,
-  PRIMARY KEY (`divisions_id`) ,
-  INDEX `fk_divisions_stages1` (`stages_stages_id` ASC) ,
+  `stages_stage_id` INT NOT NULL ,
+  PRIMARY KEY (`division_id`) ,
+  INDEX `fk_divisions_stages1` (`stages_stage_id` ASC) ,
   CONSTRAINT `fk_divisions_stages1`
-    FOREIGN KEY (`stages_stages_id` )
+    FOREIGN KEY (`stages_stage_id` )
     REFERENCES `padel`.`stages` (`stage_id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -115,7 +115,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `padel`.`games` ;
 
 CREATE  TABLE IF NOT EXISTS `padel`.`games` (
-  `games_id` INT NOT NULL AUTO_INCREMENT ,
+  `game_id` INT NOT NULL AUTO_INCREMENT ,
   `club` VARCHAR(255) NULL ,
   `result` VARCHAR(255) NULL ,
   `local_game1` VARCHAR(255) NULL ,
@@ -132,7 +132,7 @@ CREATE  TABLE IF NOT EXISTS `padel`.`games` (
   `team_visitor_id` INT NOT NULL ,
   `team_winner_id` INT NOT NULL ,
   `team_looser_id` INT NOT NULL ,
-  PRIMARY KEY (`games_id`) ,
+  PRIMARY KEY (`game_id`) ,
   INDEX `fk_games_team1` (`team_local_id` ASC) ,
   INDEX `fk_games_team2` (`team_visitor_id` ASC) ,
   INDEX `fk_games_team3` (`team_winner_id` ASC) ,
@@ -166,14 +166,14 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `padel`.`divisions_has_teams` ;
 
 CREATE  TABLE IF NOT EXISTS `padel`.`divisions_has_teams` (
-  `divisions_divisions_id` INT NOT NULL ,
+  `divisions_division_id` INT NOT NULL ,
   `teams_team_id` INT NOT NULL ,
-  PRIMARY KEY (`divisions_divisions_id`, `teams_team_id`) ,
+  PRIMARY KEY (`divisions_division_id`, `teams_team_id`) ,
   INDEX `fk_divisions_has_teams_teams1` (`teams_team_id` ASC) ,
-  INDEX `fk_divisions_has_teams_divisions1` (`divisions_divisions_id` ASC) ,
+  INDEX `fk_divisions_has_teams_divisions1` (`divisions_division_id` ASC) ,
   CONSTRAINT `fk_divisions_has_teams_divisions1`
-    FOREIGN KEY (`divisions_divisions_id` )
-    REFERENCES `padel`.`divisions` (`divisions_id` )
+    FOREIGN KEY (`divisions_division_id` )
+    REFERENCES `padel`.`divisions` (`division_id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_divisions_has_teams_teams1`
@@ -217,5 +217,27 @@ USE `padel`;
 INSERT INTO `padel`.`teams` (`team_id`, `name1`, `surname1`, `phone1`, `email1`, `name2`, `surname2`, `phone2`, `email2`, `user_name`, `password`, `league_league_id`) VALUES (1, 'Mirentxu', 'Vera', '986304040', 'vera@gmail.com', 'Maria Jose', 'Moure', '986304050', 'moure@gmail.com', 'veraMoure', '886fed01789257424228dc95fe3b5b319335ab6d', 1);
 INSERT INTO `padel`.`teams` (`team_id`, `name1`, `surname1`, `phone1`, `email1`, `name2`, `surname2`, `phone2`, `email2`, `user_name`, `password`, `league_league_id`) VALUES (2, 'Xandra', 'Lopez', '986304060', 'lopez@gmail.com', 'Paola', 'Strasser', '986304070', 'strasser@gmail.com', 'lopezStrasser', 'e58b0f284321108f80703dc19099b71002f5281d', 1);
 INSERT INTO `padel`.`teams` (`team_id`, `name1`, `surname1`, `phone1`, `email1`, `name2`, `surname2`, `phone2`, `email2`, `user_name`, `password`, `league_league_id`) VALUES (3, 'Loreto', 'Ramos', '986304080', 'ramos@gmail.com', 'Carla', 'Barciela', '986305010', 'barciela@gmail.com', 'ramosBarciela', '8fbdb4afa61657da916b0211fc49f00a6e304a20', 1);
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `padel`.`stages`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `padel`;
+INSERT INTO `padel`.`stages` (`stage_id`, `number`, `start_date`, `finish_date`, `year`, `status`, `league_league_id`) VALUES (1, 1, '1-5-2011', '15-15-2011', '2011', 'Active', 1);
+INSERT INTO `padel`.`stages` (`stage_id`, `number`, `start_date`, `finish_date`, `year`, `status`, `league_league_id`) VALUES (2, 2, '16-5-2011', '31-5-2011', '2011', 'Inactive', 1);
+INSERT INTO `padel`.`stages` (`stage_id`, `number`, `start_date`, `finish_date`, `year`, `status`, `league_league_id`) VALUES (3, 3, '1-6-2011', '15-6-2011', '2011', 'Inactive', 1);
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `padel`.`divisions`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `padel`;
+INSERT INTO `padel`.`divisions` (`division_id`, `level`, `stages_stage_id`) VALUES (1, 1, 1);
+INSERT INTO `padel`.`divisions` (`division_id`, `level`, `stages_stage_id`) VALUES (2, 2, 1);
+INSERT INTO `padel`.`divisions` (`division_id`, `level`, `stages_stage_id`) VALUES (3, 3, 1);
 
 COMMIT;

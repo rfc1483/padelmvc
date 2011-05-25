@@ -2,14 +2,34 @@
 
 require_once('lib/database.php');
 
-class UpdateLeague {
+class Division {
 
-    private $formArray;
+    private $divisionData;
 
-    public function __construct() {
-        $this->formArray = $_POST;
-        $this->formArray = $this->filterParameters($this->formArray);
-        $this->updateData();
+    public function __construct(array $divisionData) {
+        $this->divisionData = $this->filterParameters($divisionData);
+        $this->insertData();
+    }
+
+    private function insertData() {
+        try {
+            extract($this->divisionData);
+            $data = array(
+                ':level' => $level,
+                ':stageId' => $stageId
+            );
+
+            $dbh = new Database();
+            $sql = "insert into divisions (level, stages_stage_id) 
+                VALUES (:level, :stageId)";
+            $sth = $dbh->prepare($sql);
+            $sth->execute($data);
+            $db = null;
+        } catch (PDOException $e) {
+            echo "I'm sorry, Dave. I'm afraid I can't do that.<br />";
+            file_put_contents('PDOErrors.txt', $e->getMessage() . "\n", FILE_APPEND);
+            echo $e->getMessage();
+        }
     }
 
     public function filterParameters($array) {
@@ -40,35 +60,4 @@ class UpdateLeague {
         return $array;
     }
 
-    private function updateData() {
-        try {
-            extract($this->formArray);
-
-            $data = array(
-                ':id' => $id,
-                ':name' => $name,
-                ':year' => $year,
-                ':status' => $status
-            );
-
-            $dbh = new Database();
-
-            $sql = "UPDATE leagues SET 
-            name = :name,
-            year = :year,
-            status = :status
-            WHERE league_id = :id
-            ";
-
-            $sth = $dbh->prepare($sql);
-            $sth->execute($data);
-            $db = null;
-        } catch (PDOException $e) {
-            echo "I'm sorry, Dave. I'm afraid I can't do that.<br />";
-            file_put_contents('PDOErrors.txt', $e->getMessage() . "\n", FILE_APPEND);
-            echo $e->getMessage();
-        }
-    }
-
 }
-
